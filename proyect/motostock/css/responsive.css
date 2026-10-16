@@ -1,0 +1,72 @@
+/* ==========================================================
+  RESPONSIVE: escritorio (base), tableta y celular
+  ========================================================== */
+
+@media (max-width: 1024px) {
+  .two-col,
+  .config {
+    grid-template-columns: 1fr;
+  }
+
+  .filters { grid-template-columns: 1fr 1fr; }
+  .filters input { grid-column: 1 / -1; }
+}
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform 0.25s;
+  }
+
+  .sidebar.open { transform: none; }
+
+  .menu-btn { display: block; }
+
+  .topbar { padding: 0 16px; }
+  main { padding: 20px 16px; }
+
+  .user div { display: none; }
+}
+
+@media (max-width: 700px) {
+  .prov-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters { grid-template-columns: 1fr; }
+
+  .page-head .btn { width: 100%; }
+  .form-actions .btn { flex: 1; }
+
+  .hero { padding: 24px; }
+
+  .modal-actions { flex-direction: column-reverse; }
+}
+
+@media (max-width: 700px) {
+  .detalle { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1024px) {
+  .reg-layout,
+  .det-grid { grid-template-columns: 1fr; }
+
+  .reg-side { position: static; }
+  .cols-3 { grid-template-columns: 1fr 1fr; }
+  .det-img { min-height: 320px; }
+}
+
+@media (max-width: 700px) {
+  .cols-3 { grid-template-columns: 1fr; }
+  .det-head .acciones { width: 100%; }
+  .det-head .acciones .btn { flex: 1; }
+  .donut-wrap { flex-direction: column; }
+}

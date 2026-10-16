@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Categorías | MotoStock</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body data-page="categorias" data-root="../">
+
+  <div class="app">
+
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="content">
+      <header class="topbar" id="topbar"></header>
+
+      <main>
+
+        <div class="page-head">
+          <div>
+            <p class="eyebrow">Organización del inventario</p>
+            <h1>Categorías</h1>
+            <p class="subtitle">Agrupa tus repuestos para encontrarlos de manera rápida y ordenada.</p>
+          </div>
+          <button class="btn btn-primary" data-open="modalCategoria">+ Nueva categoría</button>
+        </div>
+
+        <section class="stats">
+          <div class="stat naranja"><small>Categorías activas</small><strong>5</strong>Clasificaciones disponibles</div>
+          <div class="stat"><small>Mayor categoría</small><strong>Motor</strong>45 repuestos registrados</div>
+          <div class="stat"><small>Sin clasificar</small><strong>3</strong>Productos por organizar</div>
+        </section>
+
+        <div class="card" style="padding: 0;">
+
+          <div style="padding: 20px;">
+            <h2>Todas las categorías</h2>
+            <p class="subtitle">5 categorías encontradas</p>
+          </div>
+
+          <div class="cat-row" data-item>
+            <span class="ico">🏷</span>
+            <div class="grow"><strong data-campo="nombre">Motor</strong><small data-campo="descripcion">Filtros, empaques y componentes internos</small></div>
+            <span class="num">45</span>
+            <button class="icon-btn" aria-label="Editar" data-editar="modalEditarCategoria">✎</button>
+            <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará esta categoría.">🗑</button>
+          </div>
+
+          <div class="cat-row" data-item>
+            <span class="ico">🏷</span>
+            <div class="grow"><strong data-campo="nombre">Frenos</strong><small data-campo="descripcion">Pastillas, discos y sistemas hidráulicos</small></div>
+            <span class="num">33</span>
+            <button class="icon-btn" aria-label="Editar" data-editar="modalEditarCategoria">✎</button>
+            <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará esta categoría.">🗑</button>
+          </div>
+
+          <div class="cat-row" data-item>
+            <span class="ico">🏷</span>
+            <div class="grow"><strong data-campo="nombre">Eléctrico</strong><small data-campo="descripcion">Bombillos, baterías y cableado</small></div>
+            <span class="num">28</span>
+            <button class="icon-btn" aria-label="Editar" data-editar="modalEditarCategoria">✎</button>
+            <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará esta categoría.">🗑</button>
+          </div>
+
+          <div class="cat-row" data-item>
+            <span class="ico">🏷</span>
+            <div class="grow"><strong data-campo="nombre">Transmisión</strong><small data-campo="descripcion">Cadenas, piñones y kits de arrastre</small></div>
+            <span class="num">14</span>
+            <button class="icon-btn" aria-label="Editar" data-editar="modalEditarCategoria">✎</button>
+            <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará esta categoría.">🗑</button>
+          </div>
+
+          <div class="cat-row" data-item>
+            <span class="ico">🏷</span>
+            <div class="grow"><strong data-campo="nombre">Accesorios</strong><small data-campo="descripcion">Espejos, soportes y protección</small></div>
+            <span class="num">8</span>
+            <button class="icon-btn" aria-label="Editar" data-editar="modalEditarCategoria">✎</button>
+            <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará esta categoría.">🗑</button>
+          </div>
+
+        </div>
+
+        <!-- Modal: nueva categoría -->
+        <div class="modal" id="modalCategoria">
+          <div class="modal-box" role="dialog" aria-modal="true">
+            <h2>Nueva categoría</h2>
+            <p>Crea una clasificación clara para organizar los repuestos.</p>
+
+            <form data-validate novalidate data-ok="Categoría guardada">
+
+              <div class="field">
+                <label for="cNombre">Nombre de la categoría <span>*</span></label>
+                <input id="cNombre" placeholder="Ej. Suspensión" data-rules="required|min:3">
+              </div>
+
+              <div class="field">
+                <label for="cDesc">Descripción (opcional)</label>
+                <textarea id="cDesc" placeholder="Describe qué repuestos pertenecen aquí..."></textarea>
+              </div>
+
+              <div class="modal-actions">
+                <button type="button" class="btn" data-close>Cancelar</button>
+                <button class="btn btn-primary">Guardar categoría</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Modal: editar categoría -->
+        <div class="modal" id="modalEditarCategoria">
+          <div class="modal-box" role="dialog" aria-modal="true">
+            <h2>Editar categoría</h2>
+            <p>Actualiza el nombre o la descripción.</p>
+
+            <form data-validate data-edit novalidate data-ok="Cambios guardados">
+
+              <div class="field">
+                <label for="ecNombre">Nombre de la categoría <span>*</span></label>
+                <input id="ecNombre" name="nombre" data-rules="required|min:3">
+              </div>
+
+              <div class="field">
+                <label for="ecDesc">Descripción</label>
+                <textarea id="ecDesc" name="descripcion"></textarea>
+              </div>
+
+              <div class="modal-actions">
+                <button type="button" class="btn" data-close>Cancelar</button>
+                <button class="btn btn-primary">Guardar cambios</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/models/validator.js"></script>
+  <script src="../js/models/menu.js"></script>
+  <script src="../js/views/shellView.js"></script>
+  <script src="../js/views/formView.js"></script>
+  <script src="../js/views/modalView.js"></script>
+  <script src="../js/controllers/shellController.js"></script>
+  <script src="../js/controllers/formController.js"></script>
+  <script src="../js/controllers/modalController.js"></script>
+  <script src="../js/controllers/repuestosController.js"></script>
+  <script src="../js/controllers/rowController.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

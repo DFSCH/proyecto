@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio | MotoStock</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body data-page="inicio" data-root="">
+
+  <div class="app">
+
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="content">
+      <header class="topbar" id="topbar"></header>
+
+      <main>
+
+        <div class="page-head">
+          <div>
+            <p class="eyebrow">Resumen del taller</p>
+            <h1>Buenos días, Juan</h1>
+            <p class="subtitle">Esto es lo que está pasando hoy con tu inventario.</p>
+          </div>
+          <a class="btn btn-primary" href="html/registrar.html">+ Registrar repuesto</a>
+        </div>
+
+        <!-- Banner: coloca tu foto en assets/img/hero.jpg -->
+        <section class="hero">
+          <p class="eyebrow">Control total del inventario</p>
+          <h2>Todo tu taller,<br>en un solo lugar.</h2>
+          <p>Organiza repuestos, evita faltantes y mantén el taller siempre en marcha.</p>
+          <a class="btn" href="html/repuestos.html">Ver inventario ›</a>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="stats">
+          <div class="card stat-card">
+            <span class="ico naranja" data-icon="box"></span>
+            <div><small>Inventario total</small><strong>128</strong><em>+12 este mes</em></div>
+          </div>
+          <div class="card stat-card">
+            <span class="ico verde" data-icon="check"></span>
+            <div><small>Disponibles</small><strong>104</strong><em>81% del inventario</em></div>
+          </div>
+          <div class="card stat-card">
+            <span class="ico ambar" data-icon="alert"></span>
+            <div><small>Stock bajo</small><strong>8</strong><em>Requieren atención</em></div>
+          </div>
+          <div class="card stat-card">
+            <span class="ico rojo" data-icon="x"></span>
+            <div><small>Agotados</small><strong>16</strong><em>5 pedidos en camino</em></div>
+          </div>
+        </section>
+
+        <section class="two-col">
+
+          <!-- Alertas -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2>Alertas de inventario</h2>
+                <p class="subtitle">Productos que necesitan tu atención</p>
+              </div>
+              <a class="ver-todos" href="html/repuestos.html">Ver todos ›</a>
+            </div>
+
+            <div class="list-row">
+              <span class="ico">KA</span>
+              <div class="grow"><strong>Kit de arrastre 428H</strong><small>RP-002 · DID</small></div>
+              <div class="der"><strong>3 un.</strong><span class="badge warn">Bajo stock</span></div>
+            </div>
+
+            <div class="list-row">
+              <span class="ico">FA</span>
+              <div class="grow"><strong>Filtro de aceite</strong><small>RP-003 · K&amp;N</small></div>
+              <div class="der"><strong>0 un.</strong><span class="badge bad">Agotado</span></div>
+            </div>
+
+            <div class="list-row">
+              <span class="ico">BL</span>
+              <div class="grow"><strong>Bombillo LED H4</strong><small>RP-004 · Osram</small></div>
+              <div class="der"><strong>8 un.</strong><span class="badge ok">Disponible</span></div>
+            </div>
+          </div>
+
+          <!-- Gráfica donut -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2>Inventario por categoría</h2>
+                <p class="subtitle">Distribución actual</p>
+              </div>
+              <select class="mini" aria-label="Periodo">
+                <option>Este mes</option>
+                <option>Este año</option>
+              </select>
+            </div>
+
+            <div class="donut-wrap">
+              <div class="donut" role="img" aria-label="Motor 35%, Frenos 26%, Eléctrico 22%, Otros 17%">
+                <div class="donut-center"><strong>128</strong><small>Total</small></div>
+              </div>
+
+              <ul class="legend">
+                <li><i style="background:#ff5a1f"></i>Motor<b>35%</b></li>
+                <li><i style="background:#1c1f1d"></i>Frenos<b>26%</b></li>
+                <li><i style="background:#7a7e7a"></i>Eléctrico<b>22%</b></li>
+                <li><i style="background:#d4d4cf"></i>Otros<b>17%</b></li>
+              </ul>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="js/models/validator.js"></script>
+  <script src="js/models/menu.js"></script>
+  <script src="js/views/shellView.js"></script>
+  <script src="js/views/formView.js"></script>
+  <script src="js/views/modalView.js"></script>
+  <script src="js/controllers/shellController.js"></script>
+  <script src="js/controllers/formController.js"></script>
+  <script src="js/controllers/modalController.js"></script>
+  <script src="js/controllers/repuestosController.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

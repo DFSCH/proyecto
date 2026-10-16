@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configuración | MotoStock</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body data-page="configuracion" data-root="../">
+
+  <div class="app">
+
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="content">
+      <header class="topbar" id="topbar"></header>
+
+      <main>
+
+        <div class="page-head">
+          <div>
+            <p class="eyebrow">Preferencias del sistema</p>
+            <h1>Configuración</h1>
+            <p class="subtitle">Personaliza MotoStock según las necesidades de tu taller.</p>
+          </div>
+        </div>
+
+        <div class="config">
+
+          <!-- Pestañas -->
+          <nav class="card config-menu" style="align-self:start;">
+            <a href="#informacion" data-tab="informacion" data-icon="gear">Información del taller</a>
+            <a href="#notificaciones" data-tab="notificaciones" data-icon="bell">Notificaciones</a>
+            <a href="#preferencias" data-tab="preferencias" data-icon="grid">Preferencias</a>
+          </nav>
+
+          <div>
+
+            <!-- ===== Panel 1: Información del taller ===== -->
+            <form class="panel" id="panel-informacion" data-validate novalidate data-ok="Información guardada">
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">01</span>
+                  <div><h2>Información del taller</h2><p class="subtitle" style="margin:0">Estos datos aparecerán en documentos y reportes.</p></div>
+                </div>
+
+                <div class="logo-row">
+                  <span class="logo-box">MS</span>
+                  <div>
+                    <strong>Logo del taller</strong>
+                    <small class="subtitle" style="display:block; margin:2px 0 8px;">PNG o JPG, máximo 2 MB</small>
+                    <button type="button" class="btn" style="padding:6px 12px;">Cambiar logo</button>
+                  </div>
+                </div>
+
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="tNom">Nombre del taller <span>*</span></label>
+                    <input id="tNom" value="MotoStock Taller" data-rules="required|min:3">
+                  </div>
+
+                  <div class="field">
+                    <label for="tNit">NIT o identificación <span>*</span></label>
+                    <input id="tNit" value="901.234.567-8" data-rules="required">
+                  </div>
+
+                  <div class="field">
+                    <label for="tTel">Teléfono <span>*</span></label>
+                    <input id="tTel" value="+57 310 555 0198" data-rules="required|phone">
+                  </div>
+
+                  <div class="field">
+                    <label for="tMail">Correo electrónico <span>*</span></label>
+                    <input id="tMail" value="admin@motostock.co" data-rules="required|email">
+                  </div>
+
+                  <div class="field full">
+                    <label for="tDir">Dirección <span>*</span></label>
+                    <input id="tDir" value="Calle 32 # 18-45, Medellín" data-rules="required|min:5">
+                  </div>
+                </div>
+              </section>
+
+              <div class="form-actions">
+                <button type="reset" class="btn">Restablecer</button>
+                <button class="btn btn-primary">✓ Guardar cambios</button>
+              </div>
+            </form>
+
+            <!-- ===== Panel 2: Notificaciones ===== -->
+            <form class="panel" id="panel-notificaciones" data-validate novalidate data-ok="Notificaciones guardadas" hidden>
+
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">01</span>
+                  <div><h2>Tipos de notificación</h2><p class="subtitle" style="margin:0">Elige qué eventos deben generar una alerta.</p></div>
+                </div>
+
+                <div class="switch-row">
+                  <div><strong>Alerta de stock bajo</strong><small>Cuando un producto llegue al mínimo configurado</small></div>
+                  <label class="switch"><input type="checkbox" checked aria-label="Alerta de stock bajo"><span></span></label>
+                </div>
+                <div class="switch-row">
+                  <div><strong>Actualización de pedidos</strong><small>Cuando un pedido cambie de estado</small></div>
+                  <label class="switch"><input type="checkbox" checked aria-label="Actualización de pedidos"><span></span></label>
+                </div>
+                <div class="switch-row">
+                  <div><strong>Resumen semanal</strong><small>Reporte semanal del movimiento de inventario</small></div>
+                  <label class="switch"><input type="checkbox" aria-label="Resumen semanal"><span></span></label>
+                </div>
+              </section>
+
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">02</span>
+                  <div><h2>Canales de envío</h2><p class="subtitle" style="margin:0">Selecciona dónde quieres recibir tus alertas.</p></div>
+                </div>
+
+                <div class="switch-row">
+                  <div><strong>Notificaciones en la aplicación</strong><small>Avisos visibles dentro de MotoStock</small></div>
+                  <label class="switch"><input type="checkbox" checked aria-label="Notificaciones en la aplicación"><span></span></label>
+                </div>
+                <div class="switch-row">
+                  <div><strong>Notificaciones por correo</strong><small>Se enviarán a admin@motostock.co</small></div>
+                  <label class="switch"><input type="checkbox" checked aria-label="Notificaciones por correo"><span></span></label>
+                </div>
+
+                <div class="test-box">
+                  <div><strong>Prueba tus notificaciones</strong><small>Comprueba cómo se verá una alerta antes de guardar.</small></div>
+                  <button type="button" class="btn" id="enviarPrueba" data-icon="bell">Enviar prueba</button>
+                </div>
+              </section>
+
+              <div class="form-actions">
+                <button type="reset" class="btn">Restablecer</button>
+                <button class="btn btn-primary">✓ Guardar cambios</button>
+              </div>
+            </form>
+
+            <!-- ===== Panel 3: Preferencias ===== -->
+            <form class="panel" id="panel-preferencias" data-validate novalidate data-ok="Preferencias guardadas" hidden>
+
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">01</span>
+                  <div><h2>Formato y región</h2><p class="subtitle" style="margin:0">Configura cómo se muestran los valores del sistema.</p></div>
+                </div>
+
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="pMoneda">Moneda <span>*</span></label>
+                    <select id="pMoneda">
+                      <option>Peso colombiano (COP)</option>
+                      <option>Dólar estadounidense (USD)</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="pFecha">Formato de fecha <span>*</span></label>
+                    <select id="pFecha">
+                      <option>DD/MM/YYYY</option>
+                      <option>MM/DD/YYYY</option>
+                      <option>YYYY-MM-DD</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="pZona">Zona horaria <span>*</span></label>
+                    <select id="pZona">
+                      <option>Bogotá (GMT-5)</option>
+                      <option>Ciudad de México (GMT-6)</option>
+                      <option>Madrid (GMT+1)</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="pMin">Stock mínimo predeterminado <span>*</span></label>
+                    <input id="pMin" inputmode="numeric" value="5" data-rules="required|number">
+                  </div>
+                </div>
+              </section>
+
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">02</span>
+                  <div><h2>Comportamiento del sistema</h2><p class="subtitle" style="margin:0">Ajusta la experiencia diaria de administración.</p></div>
+                </div>
+
+                <div class="switch-row">
+                  <div><strong>Vista compacta del inventario</strong><small>Muestra más productos en cada pantalla</small></div>
+                  <label class="switch"><input type="checkbox" data-pref="compacta" aria-label="Vista compacta del inventario"><span></span></label>
+                </div>
+                <div class="switch-row">
+                  <div><strong>Confirmar antes de eliminar</strong><small>Solicita confirmación para acciones destructivas</small></div>
+                  <label class="switch"><input type="checkbox" checked aria-label="Confirmar antes de eliminar"><span></span></label>
+                </div>
+                <div class="switch-row">
+                  <div><strong>Estado de stock automático</strong><small>Actualiza el estado según las existencias disponibles</small></div>
+                  <label class="switch"><input type="checkbox" checked aria-label="Estado de stock automático"><span></span></label>
+                </div>
+              </section>
+
+              <div class="form-actions">
+                <button type="reset" class="btn">Restablecer</button>
+                <button class="btn btn-primary">✓ Guardar cambios</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/models/validator.js"></script>
+  <script src="../js/models/menu.js"></script>
+  <script src="../js/views/shellView.js"></script>
+  <script src="../js/views/formView.js"></script>
+  <script src="../js/views/modalView.js"></script>
+  <script src="../js/controllers/shellController.js"></script>
+  <script src="../js/controllers/formController.js"></script>
+  <script src="../js/controllers/modalController.js"></script>
+  <script src="../js/controllers/repuestosController.js"></script>
+  <script src="../js/controllers/configController.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

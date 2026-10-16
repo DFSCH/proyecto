@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editar repuesto | MotoStock</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body data-page="repuestos" data-root="../">
+
+  <div class="app">
+
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="content">
+      <header class="topbar" id="topbar"></header>
+
+      <main>
+
+        <div class="page-head">
+          <div>
+            <h1>Editar repuesto</h1>
+            <p class="subtitle">Actualiza la información del producto seleccionado.</p>
+          </div>
+        </div>
+
+        <!-- Los valores los rellena editarController.js según ?id=RP-002 -->
+        <form id="formEditar" data-validate data-keep novalidate data-ok="Cambios guardados">
+
+          <div class="reg-layout">
+
+            <!-- Columna izquierda: formulario -->
+            <div class="reg-main">
+
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">01</span>
+                  <div><h2>Información básica</h2><p class="subtitle" style="margin:0">Datos principales para identificar el repuesto.</p></div>
+                </div>
+
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="eCodigo">Código o SKU <span>*</span></label>
+                    <input id="eCodigo" name="codigo" data-rules="required|min:3">
+                  </div>
+
+                  <div class="field">
+                    <label for="eNombre">Nombre del repuesto <span>*</span></label>
+                    <input id="eNombre" name="nombre" data-rules="required|min:3">
+                  </div>
+
+                  <div class="field">
+                    <label for="eCategoria">Categoría <span>*</span></label>
+                    <select id="eCategoria" name="categoria" data-rules="required">
+                      <option value="">Selecciona una categoría</option>
+                      <option>Motor</option>
+                      <option>Frenos</option>
+                      <option>Eléctrico</option>
+                      <option>Transmisión</option>
+                      <option>Accesorios</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="eMarca">Marca <span>*</span></label>
+                    <input id="eMarca" name="marca" data-rules="required">
+                  </div>
+
+                  <div class="field full">
+                    <label for="eDescripcion">Descripción (opcional)</label>
+                    <textarea id="eDescripcion" name="descripcion" placeholder="Describe brevemente el repuesto..."></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">02</span>
+                  <div><h2>Inventario y precios</h2><p class="subtitle" style="margin:0">Define existencias, ubicación y valor comercial.</p></div>
+                </div>
+
+                <div class="form-grid cols-3">
+                  <div class="field">
+                    <label for="eExistencias">Cantidad disponible <span>*</span></label>
+                    <input id="eExistencias" name="existencias" inputmode="numeric" data-rules="required|number">
+                  </div>
+
+                  <div class="field">
+                    <label for="eMinimo">Stock mínimo <span>*</span></label>
+                    <input id="eMinimo" name="minimo" inputmode="numeric" data-rules="required|number">
+                  </div>
+
+                  <div class="field">
+                    <label for="eUbicacion">Ubicación <span>*</span></label>
+                    <input id="eUbicacion" name="ubicacion" data-rules="required">
+                  </div>
+
+                  <div class="field">
+                    <label for="eCompra">Precio de compra <span>*</span></label>
+                    <input id="eCompra" name="compra" inputmode="numeric" data-rules="required|number">
+                  </div>
+
+                  <div class="field">
+                    <label for="ePrecio">Precio de venta <span>*</span></label>
+                    <input id="ePrecio" name="precio" inputmode="numeric" data-rules="required|number">
+                  </div>
+
+                  <div class="field">
+                    <label for="eProveedor">Proveedor <span>*</span></label>
+                    <select id="eProveedor" name="proveedor" data-rules="required">
+                      <option value="">Selecciona un proveedor</option>
+                      <option>MotoPartes Colombia</option>
+                      <option>Repuestos del Motor</option>
+                      <option>Distribuciones Internacionales</option>
+                      <option>Moto Accesorios SAS</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card">
+                <div class="sec-head">
+                  <span class="step">03</span>
+                  <div><h2>Compatibilidad</h2><p class="subtitle" style="margin:0">Ayuda a encontrar la pieza correcta para cada moto.</p></div>
+                </div>
+
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="eModelo">Marca y modelo <span>*</span></label>
+                    <input id="eModelo" name="modelo" data-rules="required">
+                  </div>
+
+                  <div class="field">
+                    <label for="eAnos">Años compatibles <span>*</span></label>
+                    <input id="eAnos" name="anos" data-rules="required">
+                  </div>
+                </div>
+              </section>
+
+            </div>
+
+            <!-- Columna derecha: imagen y aviso -->
+            <aside class="reg-side">
+
+              <section class="card">
+                <h2 style="margin-bottom: 14px;">Imagen del repuesto</h2>
+
+                <div class="upload" id="zonaImagen" role="button" tabindex="0" aria-label="Subir imagen del repuesto">
+                  <span data-icon="upload"></span>
+                  <strong>Arrastra una imagen aquí</strong>
+                  <u>o haz clic para buscar</u>
+                  <small style="display:block; margin-top:10px;">PNG, JPG o WEBP · Máx. 5 MB</small>
+                </div>
+
+                <div class="preview" id="vistaPrevia" hidden>
+                  <img src="" alt="">
+                  <button type="button" class="icon-btn" id="quitarImagen" aria-label="Quitar imagen" data-icon="x"></button>
+                </div>
+
+                <input type="file" id="archivoImagen" accept="image/png,image/jpeg,image/webp" hidden>
+                <small class="error" id="errorImagen" role="alert" hidden></small>
+              </section>
+
+              <div class="notice">
+                <strong>⚠ Campos obligatorios</strong><br>
+                Los campos marcados con * son necesarios para registrar el producto.
+              </div>
+
+            </aside>
+          </div>
+
+          <div class="form-actions">
+            <a class="btn" id="btnCancelar" href="repuestos.html">Cancelar</a>
+            <button class="btn btn-primary">✓ Guardar cambios</button>
+          </div>
+
+        </form>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/models/validator.js"></script>
+  <script src="../js/models/menu.js"></script>
+  <script src="../js/models/repuestos.js"></script>
+  <script src="../js/models/imagenes.js"></script>
+  <script src="../js/views/shellView.js"></script>
+  <script src="../js/views/formView.js"></script>
+  <script src="../js/views/modalView.js"></script>
+  <script src="../js/views/imagenView.js"></script>
+  <script src="../js/views/uploadView.js"></script>
+  <script src="../js/controllers/shellController.js"></script>
+  <script src="../js/controllers/formController.js"></script>
+  <script src="../js/controllers/modalController.js"></script>
+  <script src="../js/controllers/repuestosController.js"></script>
+  <script src="../js/controllers/uploadController.js"></script>
+  <script src="../js/controllers/editarController.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

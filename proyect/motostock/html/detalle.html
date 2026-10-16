@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle del repuesto | MotoStock</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body data-page="repuestos" data-root="../">
+
+  <div class="app">
+
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="content">
+      <header class="topbar" id="topbar"></header>
+
+      <main>
+        <!-- Lo dibuja detalleView.js según ?id=RP-002 -->
+        <div id="detalle"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/models/validator.js"></script>
+  <script src="../js/models/menu.js"></script>
+  <script src="../js/models/repuestos.js"></script>
+  <script src="../js/models/imagenes.js"></script>
+  <script src="../js/views/shellView.js"></script>
+  <script src="../js/views/formView.js"></script>
+  <script src="../js/views/modalView.js"></script>
+  <script src="../js/views/imagenView.js"></script>
+  <script src="../js/views/detalleView.js"></script>
+  <script src="../js/controllers/shellController.js"></script>
+  <script src="../js/controllers/formController.js"></script>
+  <script src="../js/controllers/modalController.js"></script>
+  <script src="../js/controllers/repuestosController.js"></script>
+  <script src="../js/controllers/detalleController.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>
