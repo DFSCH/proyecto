@@ -1,0 +1,30 @@
+/* ==========================================================
+   PÁGINA: Proveedores
+   ========================================================== */
+.prov-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.prov { padding: 20px; }
+
+.prov-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.prov .data {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--fondo);
+  font-size: 12px;
+}
+
+.prov-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

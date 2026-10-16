@@ -1,0 +1,69 @@
+/* ==========================================================
+   COMPONENTE: botones
+   ========================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--blanco);
+  color: var(--texto);
+  font: 700 13px 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.btn:hover { border-color: var(--oscuro); }
+
+.btn-primary {
+  background: var(--naranja);
+  border-color: var(--naranja);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(255, 90, 31, 0.3);
+}
+
+.btn-primary:hover {
+  background: #e84e14;
+  border-color: #e84e14;
+}
+
+.btn-danger {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: #ffffff;
+}
+
+/* Botón de solo icono (ver, editar, eliminar) */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--suave);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+.icon-btn[aria-label="Eliminar"] { color: var(--rojo); }
+.icon-btn[aria-label="Eliminar"]:hover { background: var(--rojo-bg); }
+
+/* Foco visible con teclado */
+.btn:focus-visible,
+.icon-btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--naranja);
+  outline-offset: 2px;
+}

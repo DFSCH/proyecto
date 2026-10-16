@@ -1,8 +1,6 @@
 /* ==========================================================
-   BASE: variables, reset, tipografía, botones, formularios
+   BASE: variables, reset, tipografía e iconos
    ========================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap');
-
 :root {
   --naranja: #ff5a1f;
   --naranja-claro: #fff0ea;
@@ -42,6 +40,7 @@ a {
   text-decoration: none;
 }
 
+/* ---------- Tipografía ---------- */
 h1,
 h2,
 h3 {
@@ -67,134 +66,17 @@ h2 { font-size: 22px; }
   color: var(--suave);
 }
 
-/* ---------- Botones ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 11px 20px;
-  border: 1px solid var(--borde);
-  border-radius: 8px;
-  background: var(--blanco);
-  color: var(--texto);
-  font: 700 13px 'DM Sans', sans-serif;
-  cursor: pointer;
-  transition: 0.15s;
+/* ---------- Iconos SVG ---------- */
+.icon {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.btn:hover { border-color: var(--oscuro); }
-
-.btn-primary {
-  background: var(--naranja);
-  border-color: var(--naranja);
-  color: #ffffff;
-  box-shadow: 0 6px 14px rgba(255, 90, 31, 0.3);
-}
-
-.btn-primary:hover {
-  background: #e84e14;
-  border-color: #e84e14;
-}
-
-.btn-danger {
-  background: var(--rojo);
-  border-color: var(--rojo);
-  color: #ffffff;
-}
-
-.btn:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--naranja);
-  outline-offset: 2px;
-}
-
-/* ---------- Formularios ---------- */
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.field label {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.field label span { color: var(--naranja); }
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid var(--borde);
-  border-radius: 8px;
-  background: var(--blanco);
-  font: inherit;
-}
-
-.field textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-.field.invalid input,
-.field.invalid select,
-.field.invalid textarea {
-  border-color: var(--rojo);
-  background: #fffafa;
-}
-
-.error {
-  font-size: 12px;
-  color: var(--rojo);
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 16px;
-}
-
-.form-grid .full { grid-column: 1 / -1; }
-
-/* ---------- Etiquetas de estado ---------- */
-.badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 99px;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.ok   { background: var(--verde-bg); color: var(--verde); }
-.warn { background: var(--ambar-bg); color: var(--ambar); }
-.bad  { background: var(--rojo-bg);  color: var(--rojo); }
-
-/* ---------- Mensaje flotante ---------- */
-.toast {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 100;
-  padding: 14px 20px;
-  border-radius: 10px;
-  background: var(--oscuro);
-  color: #ffffff;
-  animation: entrar 0.2s;
-}
-
-@keyframes entrar {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-}
-
+/* ---------- Accesibilidad: sin animaciones si el usuario lo pide ---------- */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

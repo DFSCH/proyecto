@@ -1,0 +1,64 @@
+/* ==========================================================
+   COMPONENTE: tarjetas, estadísticas e iconos de color
+   ========================================================== */
+.card {
+  padding: 20px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+/* Tarjetas de color (Categorías y Proveedores) */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat {
+  padding: 20px;
+  border-radius: var(--radio);
+  background: var(--oscuro);
+  color: #ffffff;
+}
+
+.stat.naranja { background: var(--naranja); }
+
+.stat small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.stat strong {
+  display: block;
+  margin: 6px 0;
+  font: 700 34px 'Barlow Condensed';
+}
+
+/* Cuadro pequeño con iniciales o icono */
+.ico {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #ecece6;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ico.naranja { background: var(--naranja-claro); color: var(--naranja); }
+.ico.verde   { background: var(--verde-bg);      color: var(--verde); }
+.ico.ambar   { background: var(--ambar-bg);      color: var(--ambar); }
+.ico.rojo    { background: var(--rojo-bg);       color: var(--rojo); }
+
+/* Mensaje de "sin resultados" */
+.empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--suave);
+}

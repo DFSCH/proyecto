@@ -1,0 +1,21 @@
+/* ==========================================================
+   COMPONENTE: mensaje flotante (toast)
+   ========================================================== */
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 100;
+  padding: 14px 20px;
+  border-radius: 10px;
+  background: var(--oscuro);
+  color: #ffffff;
+  animation: entrar 0.2s;
+}
+
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

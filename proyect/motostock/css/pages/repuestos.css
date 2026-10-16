@@ -1,0 +1,20 @@
+/* ==========================================================
+   PÁGINA: Repuestos (barra de filtros)
+   La tabla y la paginación están en components/tabla.css
+   ========================================================== */
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 200px 200px auto;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.filters input,
+.filters select {
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font: inherit;
+}

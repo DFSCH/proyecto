@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   ShellController.init();
+  NotificacionesController.init();
   ModalController.init();
   FormController.init();
   RepuestosController.init();

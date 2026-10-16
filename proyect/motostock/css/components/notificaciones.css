@@ -1,0 +1,102 @@
+/* ==========================================================
+   COMPONENTE: campana y panel de notificaciones
+   ========================================================== */
+.notif { position: relative; }
+
+/* ---------- Campana ---------- */
+.bell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: var(--suave);
+  cursor: pointer;
+}
+
+.bell:hover { background: var(--fondo); color: var(--texto); }
+
+/* Punto naranja: solo si hay notificaciones sin leer */
+.bell.con-aviso::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: var(--naranja);
+}
+
+/* ---------- Panel desplegable ---------- */
+.notif-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 70;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  overflow: hidden;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  background: var(--blanco);
+  box-shadow: 0 16px 40px rgba(20, 22, 21, 0.18);
+}
+
+.notif-panel[hidden] { display: none; }
+
+.notif-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.notif-head button {
+  border: 0;
+  background: none;
+  color: var(--naranja);
+  font: 700 12px 'DM Sans', sans-serif;
+  cursor: pointer;
+}
+
+.notif-head button:disabled {
+  color: var(--suave);
+  cursor: default;
+}
+
+.notif-lista { list-style: none; }
+
+.notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.notif-item small {
+  display: block;
+  margin-top: 2px;
+  color: var(--suave);
+}
+
+/* Ya leída: se ve atenuada */
+.notif-item.leida { opacity: 0.55; }
+
+.notif-pie {
+  display: block;
+  padding: 14px;
+  text-align: center;
+  color: var(--naranja);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.notif-pie:hover { background: var(--fondo); }

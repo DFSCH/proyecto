@@ -1,0 +1,19 @@
+/* ==========================================================
+   PÁGINA: Categorías
+   ========================================================== */
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--borde);
+}
+
+.cat-row .grow { flex: 1; }
+
+.cat-row small {
+  display: block;
+  color: var(--suave);
+}
+
+.cat-row .num { font: 700 22px 'Barlow Condensed'; }

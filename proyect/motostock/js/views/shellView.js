@@ -104,7 +104,7 @@ const ShellView = {
       <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">${Icons.svg('menu', 24)}</button>
       ${Icons.svg('search')}
       <input type="search" placeholder="Buscar en MotoStock..." aria-label="Buscar">
-      <span class="bell" aria-label="Notificaciones">${Icons.svg('bell', 20)}</span>
+            <div class="notif" id="notif"></div>
       <div class="user">
         <span class="avatar">${usuario.iniciales}</span>
         <div>

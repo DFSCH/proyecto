@@ -1,0 +1,32 @@
+/* ==========================================================
+   MAIN: único archivo que se enlaza desde el HTML.
+   Importa todos los demás en orden.
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+/* 1. Base y estructura */
+@import 'base.css';
+@import 'layout.css';
+
+/* 2. Componentes reutilizables */
+@import 'components/botones.css';
+@import 'components/formularios.css';
+@import 'components/tarjetas.css';
+@import 'components/badges.css';
+@import 'components/tabla.css';
+@import 'components/modal.css';
+@import 'components/toast.css';
+@import 'components/upload.css';
+@import 'components/notificaciones.css';
+
+/* 3. Estilos propios de cada página */
+@import 'pages/inicio.css';
+@import 'pages/repuestos.css';
+@import 'pages/detalle.css';
+@import 'pages/registrar.css';
+@import 'pages/categorias.css';
+@import 'pages/proveedores.css';
+@import 'pages/configuracion.css';
+
+/* 4. Adaptación a tableta y celular (siempre al final) */
+@import 'responsive.css';

@@ -1,0 +1,95 @@
+/* ==========================================================
+   COMPONENTE: formularios, secciones y mensajes de error
+   ========================================================== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.field label span { color: var(--naranja); }
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--blanco);
+  font: inherit;
+}
+
+.field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Campo con error (lo activa JavaScript) */
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea {
+  border-color: var(--rojo);
+  background: #fffafa;
+}
+
+.error {
+  font-size: 12px;
+  color: var(--rojo);
+}
+
+/* ---------- Rejillas de campos ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+.form-grid .full { grid-column: 1 / -1; }
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ---------- Encabezado numerado de cada sección ---------- */
+.sec-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.step {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--naranja-claro);
+  color: var(--naranja);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------- Botones al final del formulario y aviso ---------- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.notice {
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid #ffd9c9;
+  border-radius: 8px;
+  background: var(--naranja-claro);
+  font-size: 13px;
+}

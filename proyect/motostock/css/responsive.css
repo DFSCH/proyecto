@@ -1,17 +1,25 @@
 /* ==========================================================
-  RESPONSIVE: escritorio (base), tableta y celular
-  ========================================================== */
+   RESPONSIVE: escritorio (por defecto), tableta y celular
+   ========================================================== */
 
+/* ---------- Tableta grande (hasta 1024px) ---------- */
 @media (max-width: 1024px) {
   .two-col,
-  .config {
+  .config,
+  .reg-layout,
+  .det-grid {
     grid-template-columns: 1fr;
   }
 
   .filters { grid-template-columns: 1fr 1fr; }
   .filters input { grid-column: 1 / -1; }
+
+  .cols-3 { grid-template-columns: 1fr 1fr; }
+  .reg-side { position: static; }
+  .det-img { min-height: 320px; }
 }
 
+/* ---------- Tableta (hasta 900px): menú lateral desplegable ---------- */
 @media (max-width: 900px) {
   .app { grid-template-columns: 1fr; }
 
@@ -35,9 +43,12 @@
   .user div { display: none; }
 }
 
+/* ---------- Celular (hasta 700px) ---------- */
 @media (max-width: 700px) {
   .prov-grid,
-  .form-grid {
+  .form-grid,
+  .cols-3,
+  .detalle {
     grid-template-columns: 1fr;
   }
 
@@ -47,26 +58,22 @@
   .form-actions .btn { flex: 1; }
 
   .hero { padding: 24px; }
+  .donut-wrap { flex-direction: column; }
 
-  .modal-actions { flex-direction: column-reverse; }
-}
-
-@media (max-width: 700px) {
-  .detalle { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 1024px) {
-  .reg-layout,
-  .det-grid { grid-template-columns: 1fr; }
-
-  .reg-side { position: static; }
-  .cols-3 { grid-template-columns: 1fr 1fr; }
-  .det-img { min-height: 320px; }
-}
-
-@media (max-width: 700px) {
-  .cols-3 { grid-template-columns: 1fr; }
   .det-head .acciones { width: 100%; }
   .det-head .acciones .btn { flex: 1; }
-  .donut-wrap { flex-direction: column; }
+
+  .modal-actions { flex-direction: column-reverse; }
+
+  /* El panel de notificaciones ocupa el ancho de la pantalla */
+  .notif { position: static; }
+
+  .notif-panel {
+    position: fixed;
+    top: 72px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: none;
+  }
 }

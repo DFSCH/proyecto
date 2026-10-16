@@ -1,0 +1,19 @@
+/* ==========================================================
+   PÁGINAS: Registrar y Editar repuesto (dos columnas)
+   ========================================================== */
+.reg-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.reg-main .card { margin-bottom: 16px; }
+
+.reg-side {
+  position: sticky;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
