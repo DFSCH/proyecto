@@ -14,8 +14,8 @@
   border-radius: var(--radio);
   color: #ffffff;
   background:
-    linear-gradient(90deg, rgba(8, 9, 8, 0.92), rgba(8, 9, 8, 0.5)),
-    url('../../assets/img/hero.jpg') center / cover,
+    linear-gradient(90deg, rgba(8, 9, 8, 0.88) 0%, rgba(8, 9, 8, 0.45) 55%, rgba(8, 9, 8, 0.2) 100%),
+    url('../../assets/img/hero.jpg') center right / cover no-repeat,
     #0b0c0b;
 }
 
