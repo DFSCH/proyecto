@@ -40,7 +40,7 @@ const DetalleView = {
         </div>
         <div class="acciones">
           <button class="btn" id="btnEliminar" data-icon="trash">Eliminar</button>
-          <a class="btn btn-primary" href="registrar.html" data-icon="edit">Editar repuesto</a>
+                    <a class="btn btn-primary" id="btnEditar" href="editar.html?id=${encodeURIComponent(p.codigo)}" data-icon="edit">Editar repuesto</a>
         </div>
       </div>
 
@@ -88,12 +88,12 @@ const DetalleView = {
     ImagenView.montarDetalle(p, document.body.dataset.root);
   },
 
-  noEncontrado() {
+    noEncontrado() {
     document.getElementById('detalle').innerHTML = `
       <div class="card empty">
         <h2>No encontramos ese repuesto</h2>
         <p class="subtitle">Vuelve al inventario y elige uno de la lista.</p>
-        <a class="btn btn-primary" href="editar.html?id=${p.codigo}" data-icon="edit">Editar repuesto</a>
+        <a class="btn btn-primary" href="repuestos.html" style="margin-top:16px">Ir al inventario</a>
       </div>`;
   }
 };
