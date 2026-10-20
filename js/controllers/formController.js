@@ -1,56 +1,69 @@
 /* ==========================================================
-  CONTROLADOR: une los formularios [data-validate]
-  con el modelo (Validator) y la vista (FormView)
+   CONTROLADOR: valida los formularios [data-validate].
+   Si todo es válido lanza el evento "guardar" (cancelable) con
+   los datos; cada página decide qué hacer con ellos.
    ========================================================== */
 const FormController = {
 
   revisarCampo(campo) {
     const mensaje = Validator.validar(campo.value, campo.dataset.rules);
 
-    if (mensaje) {
-      FormView.mostrarError(campo, mensaje);
-    } else {
-      FormView.limpiarError(campo);
-    }
+    if (mensaje) FormView.mostrarError(campo, mensaje);
+    else FormView.limpiarError(campo);
+
     return mensaje === '';
   },
 
-  init() {
-    document.querySelectorAll('form[data-validate]').forEach((form) => {
-      const campos = [...form.querySelectorAll('[data-rules]')];
+  validarTodo(campos) {
+    const resultados = campos.map((campo) => FormController.revisarCampo(campo));
+    const primerError = resultados.indexOf(false);
 
-      campos.forEach((campo) => {
-        campo.addEventListener('blur', () => FormController.revisarCampo(campo));
+    if (primerError === -1) return true;
 
-        campo.addEventListener('input', () => {
-          if (campo.closest('.invalid')) FormController.revisarCampo(campo);
-        });
-      });
+    campos[primerError].focus();
+    return false;
+  },
 
-      form.addEventListener('submit', (evento) => {
-        evento.preventDefault();
+  // Devuelve false si alguien canceló el guardado (ej. código repetido)
+  avisarGuardado(form) {
+    const evento = new CustomEvent('guardar', { detail: leerFormulario(form), cancelable: true });
+    return form.dispatchEvent(evento);
+  },
 
-        const resultados = campos.map((c) => FormController.revisarCampo(c));
-        const primerError = resultados.indexOf(false);
+  terminarGuardado(form) {
+    FormView.toast(form.dataset.ok || 'Guardado correctamente');
 
-        if (primerError !== -1) {
-          campos[primerError].focus();
-          return;
-        }
+    if (!form.hasAttribute('data-keep')) FormView.limpiarForm(form);
 
-        // Avisa que el formulario es válido (lo usa RowController al editar)
-        form.dispatchEvent(new CustomEvent('valido'));
+    const modal = form.closest('.modal');
+    if (modal) ModalView.cerrar(modal);
+  },
 
-        FormView.toast(form.dataset.ok || 'Guardado correctamente');
-        if (!form.hasAttribute('data-keep')) FormView.limpiarForm(form);
+  conectar(form) {
+    const campos = [...form.querySelectorAll('[data-rules]')];
 
-        const modal = form.closest('.modal');
-        if (modal) ModalView.cerrar(modal);
-      });
-
-      form.addEventListener('reset', () => {
-        setTimeout(() => campos.forEach((c) => FormView.limpiarError(c)));
+    campos.forEach((campo) => {
+      campo.addEventListener('blur', () => FormController.revisarCampo(campo));
+      campo.addEventListener('input', () => {
+        if (campo.closest('.invalid')) FormController.revisarCampo(campo);
       });
     });
+
+    form.addEventListener('submit', (evento) => {
+      evento.preventDefault();
+
+      if (!FormController.validarTodo(campos)) return;
+      if (!FormController.avisarGuardado(form)) return;
+
+      FormController.terminarGuardado(form);
+    });
+
+    form.addEventListener('reset', () => {
+      setTimeout(() => campos.forEach((campo) => FormView.limpiarError(campo)));
+    });
+  },
+
+  init() {
+    document.querySelectorAll('form[data-validate]').forEach(FormController.conectar);
   }
 };

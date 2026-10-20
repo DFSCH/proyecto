@@ -12,7 +12,7 @@ const DetalleView = {
         <circle cx="140" cy="130" r="72" fill="none" stroke="#373a38" stroke-width="14" stroke-dasharray="26 12"/>
         <circle cx="195" cy="192" r="40" fill="none" stroke="#373a38" stroke-width="14" stroke-dasharray="18 10"/>
         <text x="140" y="140" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="30" fill="#ff5a1f">${p.marca}</text>
-        <text x="262" y="46" text-anchor="end" font-family="Barlow Condensed" font-weight="700" font-size="20" fill="#7a7e7a">${p.spec}</text>
+        <text x="262" y="46" text-anchor="end" font-family="Barlow Condensed" font-weight="700" font-size="20" fill="#7a7e7a">${p.codigo}</text>
       </svg>`;
   },
 
@@ -40,7 +40,7 @@ const DetalleView = {
         </div>
         <div class="acciones">
           <button class="btn" id="btnEliminar" data-icon="trash">Eliminar</button>
-                    <a class="btn btn-primary" id="btnEditar" href="editar.html?id=${encodeURIComponent(p.codigo)}" data-icon="edit">Editar repuesto</a>
+          <a class="btn btn-primary" id="btnEditar" href="editar.html?id=${encodeURIComponent(p.codigo)}" data-icon="edit">Editar repuesto</a>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ const DetalleView = {
           <div class="det-foto" id="detFoto"></div>
           <div class="thumbs">
             <span class="thumb on" id="thumbFoto">${p.marca}</span>
-            <span class="thumb">${p.spec}</span>
+            <span class="thumb">${p.codigo}</span>
           </div>
         </div>
 
@@ -71,13 +71,13 @@ const DetalleView = {
             </dl>
 
             <h3>Compatibilidad</h3>
-            <div class="chips">${p.compat.map((c) => `<span class="chip">${c}</span>`).join('')}</div>
+            <div class="chips">${[p.modelo, 'Modelos ' + p.anos].map((c) => `<span class="chip">${c}</span>`).join('')}</div>
 
             <h3>Descripción</h3>
             <p class="subtitle" style="margin-top:0">${p.descripcion}</p>
           </section>
 
-          <p class="det-pie">Creado el ${p.creado} · Última actualización: ${p.actualizado}</p>
+          <p class="det-pie">Creado el ${formatearFecha(p.creado)} · Última actualización: ${formatearFecha(p.actualizado)}</p>
         </div>
 
       </div>`;
@@ -88,7 +88,7 @@ const DetalleView = {
     ImagenView.montarDetalle(p, document.body.dataset.root);
   },
 
-    noEncontrado() {
+  noEncontrado() {
     document.getElementById('detalle').innerHTML = `
       <div class="card empty">
         <h2>No encontramos ese repuesto</h2>

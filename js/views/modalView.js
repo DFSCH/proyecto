@@ -1,5 +1,5 @@
 /* ==========================================================
-  VISTA: abrir/cerrar modales y ventana de confirmación
+   VISTA: abrir/cerrar modales y ventana de confirmación
    ========================================================== */
 const ModalView = {
 
@@ -23,12 +23,14 @@ const ModalView = {
       modal.innerHTML = `
         <div class="modal-box" role="dialog" aria-modal="true">
           <h2>¿Estás seguro?</h2>
-          <p>${mensaje}</p>
+          <p></p>
           <div class="modal-actions">
             <button class="btn" data-respuesta="no">Cancelar</button>
             <button class="btn btn-danger" data-respuesta="si">Sí, eliminar</button>
           </div>
         </div>`;
+
+      modal.querySelector('p').textContent = mensaje;
 
       modal.addEventListener('click', (evento) => {
         const respuesta = evento.target.dataset.respuesta;

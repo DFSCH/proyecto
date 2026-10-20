@@ -26,128 +26,40 @@
             <h1>Proveedores</h1>
             <p class="subtitle">Administra contactos y mantén tus pedidos de repuestos bajo control.</p>
           </div>
-          <button class="btn btn-primary" data-open="modalProveedor">+ Nuevo proveedor</button>
+          <button class="btn btn-primary" id="btnNuevo">+ Nuevo proveedor</button>
         </div>
 
         <section class="stats">
-          <div class="stat naranja"><small>Proveedores activos</small><strong>3</strong>Socios disponibles</div>
-          <div class="stat"><small>Productos asociados</small><strong>119</strong>En el inventario actual</div>
-          <div class="stat"><small>Pedidos pendientes</small><strong>5</strong>Por recibir esta semana</div>
+          <div class="stat naranja"><small>Proveedores activos</small><strong id="provActivos">0</strong>Socios disponibles</div>
+          <div class="stat"><small>Productos asociados</small><strong id="provProductos">0</strong>En el inventario actual</div>
+          <div class="stat"><small>Pedidos pendientes</small><strong id="provPendientes">0</strong>Por recibir esta semana</div>
         </section>
 
         <h2 style="margin-bottom: 12px;">Directorio de proveedores</h2>
+        <div class="prov-grid" id="listaProveedores"></div>
 
-        <div class="prov-grid">
-
-          <article class="card prov" data-item>
-            <div class="prov-top">
-              <span class="ico" style="background: var(--oscuro); color: #fff;">MC</span>
-              <span class="badge ok">Activo</span>
-            </div>
-            <h2 data-campo="empresa">MotoPartes Colombia</h2>
-            <small>Contacto: <span data-campo="contacto">Laura Gómez</span></small>
-            <div class="data">
-              <span data-campo="telefono">+57 310 458 2090</span><br>
-              <span data-campo="correo">ventas@motopartes.co</span>
-            </div>
-            <div class="prov-foot">
-              <span><strong>42</strong> productos</span>
-              <span>
-                <button class="icon-btn" aria-label="Editar" data-editar="modalEditarProveedor">✎</button>
-                <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará este proveedor.">🗑</button>
-              </span>
-            </div>
-          </article>
-
-          <article class="card prov" data-item>
-            <div class="prov-top">
-              <span class="ico" style="background: var(--oscuro); color: #fff;">RM</span>
-              <span class="badge ok">Activo</span>
-            </div>
-            <h2 data-campo="empresa">Repuestos del Motor</h2>
-            <small>Contacto: <span data-campo="contacto">Carlos Ruiz</span></small>
-            <div class="data">
-              <span data-campo="telefono">+57 315 220 1844</span><br>
-              <span data-campo="correo">pedidos@repuestosmotor.co</span>
-            </div>
-            <div class="prov-foot">
-              <span><strong>31</strong> productos</span>
-              <span>
-                <button class="icon-btn" aria-label="Editar" data-editar="modalEditarProveedor">✎</button>
-                <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará este proveedor.">🗑</button>
-              </span>
-            </div>
-          </article>
-
-          <article class="card prov" data-item>
-            <div class="prov-top">
-              <span class="ico" style="background: var(--oscuro); color: #fff;">DI</span>
-              <span class="badge ok">Activo</span>
-            </div>
-            <h2 data-campo="empresa">Distribuciones Internacionales</h2>
-            <small>Contacto: <span data-campo="contacto">Sofía Méndez</span></small>
-            <div class="data">
-              <span data-campo="telefono">+57 300 801 1092</span><br>
-              <span data-campo="correo">comercial@dint.co</span>
-            </div>
-            <div class="prov-foot">
-              <span><strong>28</strong> productos</span>
-              <span>
-                <button class="icon-btn" aria-label="Editar" data-editar="modalEditarProveedor">✎</button>
-                <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará este proveedor.">🗑</button>
-              </span>
-            </div>
-          </article>
-
-          <article class="card prov" data-item>
-            <div class="prov-top">
-              <span class="ico" style="background: var(--oscuro); color: #fff;">MA</span>
-              <span class="badge bad">Inactivo</span>
-            </div>
-            <h2 data-campo="empresa">Moto Accesorios SAS</h2>
-            <small>Contacto: <span data-campo="contacto">Diego León</span></small>
-            <div class="data">
-              <span data-campo="telefono">+57 321 441 7800</span><br>
-              <span data-campo="correo">info@motoaccesorios.co</span>
-            </div>
-            <div class="prov-foot">
-              <span><strong>18</strong> productos</span>
-              <span>
-                <button class="icon-btn" aria-label="Editar" data-editar="modalEditarProveedor">✎</button>
-                <button class="icon-btn" aria-label="Eliminar" data-confirm="Se eliminará este proveedor.">🗑</button>
-              </span>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- Modal: registrar proveedor -->
         <div class="modal" id="modalProveedor">
           <div class="modal-box" role="dialog" aria-modal="true">
             <h2>Registrar proveedor</h2>
             <p>Agrega la información principal de tu socio comercial.</p>
 
             <form data-validate novalidate data-ok="Proveedor guardado">
-
               <div class="form-grid">
                 <div class="field">
                   <label for="pEmp">Empresa <span>*</span></label>
-                  <input id="pEmp" placeholder="Nombre del proveedor" data-rules="required|min:3">
+                  <input id="pEmp" name="empresa" placeholder="Nombre del proveedor" data-rules="required|min:3">
                 </div>
-
                 <div class="field">
                   <label for="pCon">Persona de contacto <span>*</span></label>
-                  <input id="pCon" placeholder="Nombre completo" data-rules="required|min:3">
+                  <input id="pCon" name="contacto" placeholder="Nombre completo" data-rules="required|min:3">
                 </div>
-
                 <div class="field">
                   <label for="pTel">Teléfono <span>*</span></label>
-                  <input id="pTel" placeholder="+57 300 000 0000" data-rules="required|phone">
+                  <input id="pTel" name="telefono" placeholder="+57 300 000 0000" data-rules="required|phone">
                 </div>
-
                 <div class="field">
                   <label for="pMail">Correo electrónico <span>*</span></label>
-                  <input id="pMail" placeholder="correo@empresa.com" data-rules="required|email">
+                  <input id="pMail" name="correo" placeholder="correo@empresa.com" data-rules="required|email">
                 </div>
               </div>
 
@@ -155,46 +67,6 @@
                 <button type="button" class="btn" data-close>Cancelar</button>
                 <button class="btn btn-primary">Guardar proveedor</button>
               </div>
-
-            </form>
-          </div>
-        </div>
-
-        <!-- Modal: editar proveedor -->
-        <div class="modal" id="modalEditarProveedor">
-          <div class="modal-box" role="dialog" aria-modal="true">
-            <h2>Editar proveedor</h2>
-            <p>Actualiza la información de tu socio comercial.</p>
-
-            <form data-validate data-edit novalidate data-ok="Cambios guardados">
-
-              <div class="form-grid">
-                <div class="field">
-                  <label for="epEmp">Empresa <span>*</span></label>
-                  <input id="epEmp" name="empresa" data-rules="required|min:3">
-                </div>
-
-                <div class="field">
-                  <label for="epCon">Persona de contacto <span>*</span></label>
-                  <input id="epCon" name="contacto" data-rules="required|min:3">
-                </div>
-
-                <div class="field">
-                  <label for="epTel">Teléfono <span>*</span></label>
-                  <input id="epTel" name="telefono" data-rules="required|phone">
-                </div>
-
-                <div class="field">
-                  <label for="epMail">Correo electrónico <span>*</span></label>
-                  <input id="epMail" name="correo" data-rules="required|email">
-                </div>
-              </div>
-
-              <div class="modal-actions">
-                <button type="button" class="btn" data-close>Cancelar</button>
-                <button class="btn btn-primary">Guardar cambios</button>
-              </div>
-
             </form>
           </div>
         </div>
@@ -203,20 +75,7 @@
     </div>
   </div>
 
-  <script src="../js/models/validator.js"></script>
-  <script src="../js/models/menu.js"></script>
-  <script src="../js/views/shellView.js"></script>
-  <script src="../js/views/formView.js"></script>
-  <script src="../js/views/modalView.js"></script>
-  <script src="../js/controllers/shellController.js"></script>
-  <script src="../js/controllers/formController.js"></script>
-  <script src="../js/controllers/modalController.js"></script>
-  <script src="../js/controllers/repuestosController.js"></script>
-  <script src="../js/controllers/rowController.js"></script>
-  <script src="../js/models/notificaciones.js"></script>
-  <script src="../js/views/notificacionesView.js"></script>
-  <script src="../js/controllers/notificacionesController.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="../js/cargador.js"></script>
 
 </body>
 </html>

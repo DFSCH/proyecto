@@ -72,7 +72,7 @@ const ShellView = {
       <a href="${raiz}${item.ruta}" class="${item.id === pagina ? 'active' : ''}">
         ${Icons.svg(item.icono)}
         ${item.texto}
-        ${item.cuenta ? `<span class="count">${item.cuenta}</span>` : ''}
+        ${item.contador ? '<span class="count">0</span>' : ''}
       </a>`;
 
     document.getElementById('sidebar').innerHTML = `
@@ -92,7 +92,7 @@ const ShellView = {
       <div class="sidebar-bottom">
         <div class="alert-box">
           <small>${Icons.svg('alert', 14)} Atención</small>
-          <strong>8 productos con stock bajo</strong>
+          <strong>0 productos con stock bajo</strong>
           <a href="${raiz}html/repuestos.html">Revisar inventario ›</a>
         </div>
         <nav class="nav">

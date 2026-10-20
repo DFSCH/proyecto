@@ -1,26 +1,50 @@
 /* ==========================================================
-   PUNTO DE ENTRADA: arranca todo según la página actual
+   PUNTO DE ENTRADA: cada paso se ejecuta por separado, así un
+   error en uno no detiene a los demás
    ========================================================== */
-document.addEventListener('DOMContentLoaded', () => {
+function ejecutar(nombre, accion) {
+  try {
+    accion();
+  } catch (error) {
+    console.error(`[${nombre}]`, error);
+    if (window.avisarProblema) window.avisarProblema(`Falló ${nombre}: ${error.message}`);
+  }
+}
+
+function iniciarAplicacion() {
   const { page, root } = document.body.dataset;
 
-  ShellView.render(page, root);
+  // Si el menú no está escrito en el HTML, se dibuja con JavaScript
+  ejecutar('Menú', () => {
+    if (document.getElementById('sidebar').children.length === 0) ShellView.render(page, root);
+  });
 
-  // Miniaturas en la tabla de repuestos (si la página las tiene)
-  if (typeof ImagenView !== 'undefined') {
-    ImagenView.aplicarTabla(root);
-  }
+  ejecutar('Iconos', () => Icons.aplicar());
+  ejecutar('Contadores', () => ContadoresView.actualizar());
 
-  ShellController.init();
-  NotificacionesController.init();
-  ModalController.init();
-  FormController.init();
-  RepuestosController.init();
+  const controladores = {
+    Menú: ShellController,
+    Notificaciones: NotificacionesController,
+    Ventanas: ModalController,
+    Formularios: FormController,
+    Imagen: UploadController,
+    Configuración: ConfigController,
+    Inicio: InicioController,
+    Repuestos: RepuestosController,
+    Detalle: DetalleController,
+    Registrar: RegistrarController,
+    Editar: EditarController,
+    Categorías: CategoriasController,
+    Proveedores: ProveedoresController
+  };
 
-  // Solo se inician los controladores que esa página cargó
-  if (typeof RowController !== 'undefined')     RowController.init();
-  if (typeof DetalleController !== 'undefined') DetalleController.init();
-  if (typeof UploadController !== 'undefined')  UploadController.init();
-  if (typeof ConfigController !== 'undefined')  ConfigController.init();
-  if (typeof EditarController !== 'undefined')  EditarController.init();
-});
+  Object.entries(controladores).forEach(([nombre, controlador]) => {
+    ejecutar(nombre, () => controlador.init());
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', iniciarAplicacion);
+} else {
+  iniciarAplicacion();
+}

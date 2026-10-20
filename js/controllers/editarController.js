@@ -1,62 +1,44 @@
 /* ==========================================================
-   CONTROLADOR: página de editar repuesto (lee ?id=RP-002).
-   Rellena el formulario con los datos del repuesto y carga
-   su foto actual en la zona de imagen.
+   CONTROLADOR: editar un repuesto (Update). Lee ?id=RP-002
    ========================================================== */
 const EditarController = {
+
+  mostrarNoEncontrado(form) {
+    const aviso = crearElemento('div', { clase: 'card empty' },
+      crearElemento('h2', { texto: 'No encontramos ese repuesto' }),
+      crearElemento('a', { clase: 'btn btn-primary', href: 'repuestos.html', texto: 'Ir al inventario' }));
+    form.replaceChildren(aviso);
+  },
+
+  cargarFoto(repuesto) {
+    const foto = new Image();
+    foto.addEventListener('load', () => UploadView.mostrarPrevia(foto.src, repuesto.nombre));
+    ImagenView.cargar(foto, repuesto.codigo, document.body.dataset.root, () => {});
+  },
 
   init() {
     const form = document.getElementById('formEditar');
     if (!form) return;
 
     const id = new URLSearchParams(window.location.search).get('id');
-    const p = RepuestosModel.buscar(id);
+    const repuesto = RepuestosModel.buscarPorId(id);
 
-    // Si el código no existe, se avisa y se ofrece volver
-    if (!p) {
-      form.innerHTML = `
-        <div class="card empty">
-          <h2>No encontramos ese repuesto</h2>
-          <p class="subtitle">Vuelve al inventario y elige uno de la lista.</p>
-          <a class="btn btn-primary" href="repuestos.html" style="margin-top:16px">Ir al inventario</a>
-        </div>`;
+    if (!repuesto) {
+      EditarController.mostrarNoEncontrado(form);
       return;
     }
 
-    // 1. Rellenar los campos (cada clave coincide con el name del input)
-    const valores = {
-      codigo: p.codigo,
-      nombre: p.nombre,
-      categoria: p.categoria,
-      marca: p.marca,
-      descripcion: p.descripcion,
-      existencias: p.existencias,
-      minimo: p.minimo,
-      ubicacion: p.ubicacion,
-      compra: p.compra,
-      precio: p.precio,
-      proveedor: p.proveedor,
-      modelo: p.compat[0] || '',
-      anos: (p.compat[1] || '').replace('Modelos ', '')
-    };
+    OpcionesView.llenar(form.elements.categoria, CategoriasModel.listar().map((c) => c.nombre), 'Selecciona una categoría');
+    OpcionesView.llenar(form.elements.proveedor, ProveedoresModel.listar().map((p) => p.empresa), 'Selecciona un proveedor');
 
-    Object.keys(valores).forEach((nombre) => {
-      form.elements[nombre].value = valores[nombre];
-    });
+    llenarFormulario(form, repuesto);
+    form.elements.codigo.readOnly = true; // el código identifica al repuesto
+    document.getElementById('btnCancelar').href = `detalle.html?id=${encodeURIComponent(id)}`;
+    EditarController.cargarFoto(repuesto);
 
-    // 2. "Cancelar" vuelve al detalle de este repuesto
-    document.getElementById('btnCancelar').href = `detalle.html?id=${encodeURIComponent(p.codigo)}`;
-
-    // 3. Mostrar la foto actual en la zona de imagen (si existe)
-    const foto = new Image();
-    foto.addEventListener('load', () => UploadView.mostrarPrevia(foto.src, p.nombre));
-    ImagenView.cargar(foto, p.codigo, document.body.dataset.root, () => {});
-
-    // 4. Al guardar con éxito, regresa al detalle
-    form.addEventListener('valido', () => {
-      setTimeout(() => {
-        window.location.href = `detalle.html?id=${encodeURIComponent(p.codigo)}`;
-      }, 900);
+    form.addEventListener('guardar', (evento) => {
+      RepuestosModel.editar(id, evento.detail);
+      setTimeout(() => { window.location.href = `detalle.html?id=${encodeURIComponent(id)}`; }, 900);
     });
   }
 };
