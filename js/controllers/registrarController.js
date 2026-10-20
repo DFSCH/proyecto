@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: registrar un repuesto nuevo (Create)
+  CONTROLADOR: registrar un repuesto nuevo (Create)
    ========================================================== */
 const RegistrarController = {
 
@@ -9,6 +9,8 @@ const RegistrarController = {
 
     OpcionesView.llenar(form.elements.categoria, CategoriasModel.listar().map((c) => c.nombre), 'Selecciona una categoría');
     OpcionesView.llenar(form.elements.proveedor, ProveedoresModel.listar().map((p) => p.empresa), 'Selecciona un proveedor');
+
+    form.elements.minimo.value = ConfiguracionModel.obtener().preferencias.minimo;
 
     form.addEventListener('guardar', (evento) => {
       const datos = evento.detail;

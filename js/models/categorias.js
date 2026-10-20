@@ -1,15 +1,19 @@
 /* ==========================================================
-   MODELO: categorías
+  MODELO: categorías
    ========================================================== */
 const CategoriasModel = (() => {
 
   const repositorio = crearRepositorio('motostock_categorias', CATEGORIAS_INICIALES);
+  const CAMPOS_BUSQUEDA = ['nombre', 'descripcion'];
 
   const listarConConteo = () =>
     repositorio.listar().map((categoria) => ({
       ...categoria,
       cantidad: RepuestosModel.listar().filter((r) => r.categoria === categoria.nombre).length
     }));
+
+  const buscar = (texto) =>
+    listarConConteo().filter((categoria) => contieneTexto(categoria, texto, CAMPOS_BUSQUEDA));
 
   const resumen = () => {
     const lista = listarConConteo();
@@ -24,5 +28,5 @@ const CategoriasModel = (() => {
     };
   };
 
-  return { ...repositorio, listarConConteo, resumen };
+  return { ...repositorio, listarConConteo, buscar, resumen };
 })();

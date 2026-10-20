@@ -1,6 +1,6 @@
 /* ==========================================================
-   PUNTO DE ENTRADA: cada paso se ejecuta por separado, así un
-   error en uno no detiene a los demás
+  PUNTO DE ENTRADA: cada paso se ejecuta por separado, así un
+  error en uno no detiene a los demás
    ========================================================== */
 function ejecutar(nombre, accion) {
   try {
@@ -29,13 +29,15 @@ function iniciarAplicacion() {
     Formularios: FormController,
     Imagen: UploadController,
     Configuración: ConfigController,
+    Preferencias: PreferenciasController,
     Inicio: InicioController,
     Repuestos: RepuestosController,
     Detalle: DetalleController,
     Registrar: RegistrarController,
     Editar: EditarController,
     Categorías: CategoriasController,
-    Proveedores: ProveedoresController
+    Proveedores: ProveedoresController,
+    Búsqueda: BusquedaController
   };
 
   Object.entries(controladores).forEach(([nombre, controlador]) => {

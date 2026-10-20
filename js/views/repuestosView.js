@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: tabla y paginación de repuestos (se crean con el DOM)
+  VISTA: tabla y paginación de repuestos (se crean con el DOM)
    ========================================================== */
 const RepuestosView = {
 

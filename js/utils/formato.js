@@ -1,5 +1,5 @@
 /* ==========================================================
-   UTILIDADES: formato de dinero, fechas y texto seguro
+  UTILIDADES: formato de dinero, fechas y texto seguro
    ========================================================== */
 const formatearDinero = (valor) => '$' + Number(valor).toLocaleString('es-CO');
 
@@ -9,7 +9,7 @@ const formatearFecha = (fechaIso) =>
 // Evita que un texto escrito por el usuario se interprete como HTML
 const escaparHtml = (texto) =>
   texto.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
 const escaparTextos = (objeto) =>
   Object.fromEntries(

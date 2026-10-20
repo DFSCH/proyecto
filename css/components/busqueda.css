@@ -1,0 +1,58 @@
+/* ==========================================================
+   COMPONENTE: búsqueda general de la barra superior
+   ========================================================== */
+.busqueda-global {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.busqueda-global input {
+  width: 100%;
+}
+
+.busqueda-panel {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 0;
+  z-index: 70;
+  width: min(440px, calc(100vw - 32px));
+  max-height: 70vh;
+  overflow-y: auto;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  background: var(--blanco);
+  box-shadow: 0 16px 40px rgba(20, 22, 21, 0.18);
+}
+
+.busqueda-panel[hidden] { display: none; }
+
+.busqueda-grupo { padding: 8px 0; }
+.busqueda-grupo + .busqueda-grupo { border-top: 1px solid var(--borde); }
+
+.busqueda-grupo h3 {
+  padding: 6px 18px;
+  font: 700 11px 'DM Sans', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--suave);
+}
+
+.busqueda-item {
+  display: block;
+  padding: 10px 18px;
+}
+
+.busqueda-item:hover,
+.busqueda-item:focus-visible { background: var(--fondo); }
+
+.busqueda-item small {
+  display: block;
+  color: var(--suave);
+}
+
+.busqueda-vacio {
+  padding: 18px;
+  text-align: center;
+  color: var(--suave);
+}

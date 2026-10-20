@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: contadores del menú lateral
+  VISTA: contadores del menú lateral
    ========================================================== */
 const ContadoresView = {
 

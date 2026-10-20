@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: zona de subida de imagen (vista previa y errores)
+  VISTA: zona de subida de imagen (vista previa y errores)
    ========================================================== */
 const UploadView = {
 

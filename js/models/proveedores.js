@@ -1,9 +1,10 @@
 /* ==========================================================
-   MODELO: proveedores
+  MODELO: proveedores
    ========================================================== */
 const ProveedoresModel = (() => {
 
   const PEDIDOS_PENDIENTES = 5; // dato fijo: la app aún no maneja pedidos
+  const CAMPOS_BUSQUEDA = ['empresa', 'contacto', 'telefono', 'correo', 'estado'];
   const repositorio = crearRepositorio('motostock_proveedores', PROVEEDORES_INICIALES);
 
   const listarConConteo = () =>
@@ -11,6 +12,9 @@ const ProveedoresModel = (() => {
       ...proveedor,
       cantidad: RepuestosModel.listar().filter((r) => r.proveedor === proveedor.empresa).length
     }));
+
+  const buscar = (texto) =>
+    listarConConteo().filter((proveedor) => contieneTexto(proveedor, texto, CAMPOS_BUSQUEDA));
 
   const resumen = () => {
     const lista = listarConConteo();
@@ -22,5 +26,5 @@ const ProveedoresModel = (() => {
     };
   };
 
-  return { ...repositorio, listarConConteo, resumen };
+  return { ...repositorio, listarConConteo, buscar, resumen };
 })();

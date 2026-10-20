@@ -1,6 +1,6 @@
 /* ==========================================================
-   PÁGINA: Repuestos (barra de filtros)
-   La tabla y la paginación están en components/tabla.css
+  PÁGINA: Repuestos (barra de filtros)
+  La tabla y la paginación están en components/tabla.css
    ========================================================== */
 .filters {
   display: grid;

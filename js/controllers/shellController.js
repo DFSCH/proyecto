@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: menú lateral desplegable (tableta y celular)
+  CONTROLADOR: menú lateral desplegable (tableta y celular)
    ========================================================== */
 const ShellController = {
 

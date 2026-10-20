@@ -1,5 +1,5 @@
 /* ==========================================================
-   UTILIDADES: dividir una lista en páginas
+  UTILIDADES: dividir una lista en páginas
    ========================================================== */
 function paginar(lista, pagina, porPagina) {
   const paginas = Math.max(1, Math.ceil(lista.length / porPagina));

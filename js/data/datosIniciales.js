@@ -1,5 +1,5 @@
 /* ==========================================================
-   DATOS INICIALES: se usan solo la primera vez que se abre la app
+  DATOS INICIALES: se usan solo la primera vez que se abre la app
    ========================================================== */
 const FECHA_INICIAL = '2026-01-15T00:00:00.000Z';
 

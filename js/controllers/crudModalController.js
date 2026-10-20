@@ -1,6 +1,6 @@
 /* ==========================================================
-   CONTROLADOR GENÉRICO: crear, editar y eliminar con una
-   ventana modal. Lo usan Categorías y Proveedores (DRY).
+  CONTROLADOR GENÉRICO: crear, editar y eliminar con una
+  ventana modal. Lo usan Categorías y Proveedores (DRY).
    ========================================================== */
 const CrudModalController = {
 

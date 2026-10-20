@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: listado y resumen de categorías
+  VISTA: listado y resumen de categorías
    ========================================================== */
 const CategoriasView = {
 
@@ -18,8 +18,15 @@ const CategoriasView = {
   },
 
   pintarLista(categorias) {
-    document.getElementById('listaCategorias').replaceChildren(...categorias.map(CategoriasView.fila));
+    const contenedor = document.getElementById('listaCategorias');
     document.getElementById('catTotal').textContent = `${categorias.length} categorías encontradas`;
+
+    if (categorias.length === 0) {
+      contenedor.replaceChildren(crearElemento('p', { clase: 'empty', texto: 'No hay categorías con ese nombre.' }));
+      return;
+    }
+
+    contenedor.replaceChildren(...categorias.map((categoria) => CategoriasView.fila(categoria)));
     Icons.aplicar();
   },
 

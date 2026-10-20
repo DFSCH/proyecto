@@ -1,5 +1,5 @@
 /* ==========================================================
-   ALMACÉN: único archivo que habla con localStorage
+  ALMACÉN: único archivo que habla con localStorage
    ========================================================== */
 const AlmacenLocal = {
 

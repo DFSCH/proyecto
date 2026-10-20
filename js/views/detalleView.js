@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: dibuja la página de detalle de un repuesto
+  VISTA: dibuja la página de detalle de un repuesto
    ========================================================== */
 const DetalleView = {
 

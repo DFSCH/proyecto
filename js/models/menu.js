@@ -1,5 +1,5 @@
 /* ==========================================================
-   MODELO: datos del menú y del usuario
+  MODELO: datos del menú y del usuario
    ========================================================== */
 const MenuModel = {
   items: [

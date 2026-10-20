@@ -1,5 +1,5 @@
 /* ==========================================================
-   MODELO: notificaciones de ejemplo y su estado (leídas)
+  MODELO: notificaciones de ejemplo y su estado (leídas)
    ========================================================== */
 const NotificacionesModel = {
 
@@ -26,26 +26,16 @@ const NotificacionesModel = {
 
   // Recupera si ya se marcaron como leídas (para que no vuelvan al cambiar de página)
   cargar() {
-    try {
-      if (localStorage.getItem(NotificacionesModel.clave) === '1') {
-        NotificacionesModel.lista.forEach((n) => { n.leida = true; });
-      }
-    } catch (error) {
-      // Si el navegador bloquea el almacenamiento, se sigue sin guardar
-    }
+    const yaLeidas = AlmacenLocal.leer(NotificacionesModel.clave, false);
+    if (yaLeidas) NotificacionesModel.lista.forEach((notificacion) => { notificacion.leida = true; });
   },
 
   marcarTodas() {
-    NotificacionesModel.lista.forEach((n) => { n.leida = true; });
-
-    try {
-      localStorage.setItem(NotificacionesModel.clave, '1');
-    } catch (error) {
-      // Sin almacenamiento: el cambio solo dura en esta página
-    }
+    NotificacionesModel.lista.forEach((notificacion) => { notificacion.leida = true; });
+    AlmacenLocal.guardar(NotificacionesModel.clave, true);
   },
 
   hayNoLeidas() {
-    return NotificacionesModel.lista.some((n) => !n.leida);
+    return NotificacionesModel.lista.some((notificacion) => !notificacion.leida);
   }
 };

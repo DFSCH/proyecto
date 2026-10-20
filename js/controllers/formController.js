@@ -1,7 +1,7 @@
 /* ==========================================================
-   CONTROLADOR: valida los formularios [data-validate].
-   Si todo es válido lanza el evento "guardar" (cancelable) con
-   los datos; cada página decide qué hacer con ellos.
+  CONTROLADOR: valida los formularios [data-validate].
+  Si todo es válido lanza el evento "guardar" (cancelable) con
+  los datos; cada página decide qué hacer con ellos.
    ========================================================== */
 const FormController = {
 

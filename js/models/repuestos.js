@@ -1,5 +1,5 @@
 /* ==========================================================
-   MODELO: repuestos (reglas de negocio sobre los datos)
+  MODELO: repuestos (reglas de negocio sobre los datos)
    ========================================================== */
 const RepuestosModel = (() => {
 

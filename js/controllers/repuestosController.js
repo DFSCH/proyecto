@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: listado de repuestos (buscar, filtrar, paginar, eliminar)
+  CONTROLADOR: listado de repuestos (buscar, filtrar, paginar, eliminar)
    ========================================================== */
 const RepuestosController = {
 

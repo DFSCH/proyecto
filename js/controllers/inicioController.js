@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: página de inicio (datos reales del inventario)
+  CONTROLADOR: página de inicio (datos reales del inventario)
    ========================================================== */
 const InicioController = {
 

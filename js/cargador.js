@@ -21,6 +21,8 @@
     'models/repuestos.js',
     'models/categorias.js',
     'models/proveedores.js',
+    'models/configuracion.js',
+    'models/busqueda.js', 
 
     // Utilidades
     'utils/formulario.js',
@@ -42,6 +44,7 @@
     'views/categoriasView.js',
     'views/proveedoresView.js',
     'views/inicioView.js',
+    'views/busquedaView.js',
 
     // Controladores
     'controllers/shellController.js',
@@ -51,6 +54,7 @@
     'controllers/crudModalController.js',
     'controllers/uploadController.js',
     'controllers/configController.js',
+    'controllers/preferenciasController.js',
     'controllers/inicioController.js',
     'controllers/repuestosController.js',
     'controllers/detalleController.js',
@@ -58,6 +62,7 @@
     'controllers/editarController.js',
     'controllers/categoriasController.js',
     'controllers/proveedoresController.js',
+    'controllers/busquedaController.js',
 
     // Arranque (siempre al final)
     'main.js'

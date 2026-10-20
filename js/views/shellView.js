@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: iconos SVG + barra lateral y barra superior
+  VISTA: iconos SVG + barra lateral y barra superior
    ========================================================== */
 const Icons = {
 
@@ -84,7 +84,7 @@ const ShellView = {
 
         <div class="nav-title">Sistema</div>
         <a href="${raiz}html/configuracion.html"
-           class="${pagina === 'configuracion' ? 'active' : ''}">
+          class="${pagina === 'configuracion' ? 'active' : ''}">
           ${Icons.svg('gear')}Configuración
         </a>
       </nav>

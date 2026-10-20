@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: llena los <select> con datos reales
+  VISTA: llena los <select> con datos reales
    ========================================================== */
 const OpcionesView = {
 

@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: tarjetas, alertas y donut de la página de inicio
+  VISTA: tarjetas, alertas y donut de la página de inicio
    ========================================================== */
 const InicioView = {
 

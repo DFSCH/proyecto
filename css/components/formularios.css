@@ -1,5 +1,5 @@
 /* ==========================================================
-   COMPONENTE: formularios, secciones y mensajes de error
+  COMPONENTE: formularios, secciones y mensajes de error
    ========================================================== */
 .field {
   display: flex;
@@ -92,4 +92,15 @@
   border-radius: 8px;
   background: var(--naranja-claro);
   font-size: 13px;
+}
+
+/* Cuadro de búsqueda de los listados */
+.buscador {
+  width: 260px;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--blanco);
+  font: inherit;
 }

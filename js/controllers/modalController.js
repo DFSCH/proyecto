@@ -1,7 +1,7 @@
 /* ==========================================================
-   CONTROLADOR: abrir y cerrar ventanas modales.
-   Usa un solo escuchador de clics para toda la página
-   (delegación de eventos), así funciona con cualquier ventana.
+  CONTROLADOR: abrir y cerrar ventanas modales.
+  Usa un solo escuchador de clics para toda la página
+  (delegación de eventos), así funciona con cualquier ventana.
    ========================================================== */
 const ModalController = {
 

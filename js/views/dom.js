@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA BASE: crea elementos con textContent (seguro)
+  VISTA BASE: crea elementos con textContent (seguro)
    ========================================================== */
 function crearElemento(etiqueta, atributos = {}, ...hijos) {
   const elemento = document.createElement(etiqueta);

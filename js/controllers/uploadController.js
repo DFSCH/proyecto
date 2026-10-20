@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: subir imagen (clic o arrastrar y soltar)
+  CONTROLADOR: subir imagen (clic o arrastrar y soltar)
    ========================================================== */
 const UploadController = {
 

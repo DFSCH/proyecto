@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: abrir/cerrar modales y ventana de confirmación
+  VISTA: abrir/cerrar modales y ventana de confirmación
    ========================================================== */
 const ModalView = {
 
@@ -17,6 +17,9 @@ const ModalView = {
 
   // Devuelve una promesa: true si confirma, false si cancela
   confirmar(mensaje) {
+    const debeConfirmar = ConfiguracionModel.obtener().preferencias.confirmar;
+    if (!debeConfirmar) return Promise.resolve(true);
+
     return new Promise((resolver) => {
       const modal = document.createElement('div');
       modal.className = 'modal open';

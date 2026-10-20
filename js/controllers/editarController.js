@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: editar un repuesto (Update). Lee ?id=RP-002
+  CONTROLADOR: editar un repuesto (Update). Lee ?id=RP-002
    ========================================================== */
 const EditarController = {
 

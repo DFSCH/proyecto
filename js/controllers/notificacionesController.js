@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: abrir/cerrar el panel y marcar como leídas
+  CONTROLADOR: abrir/cerrar el panel y marcar como leídas
    ========================================================== */
 const NotificacionesController = {
 

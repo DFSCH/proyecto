@@ -1,5 +1,5 @@
 /* ==========================================================
-   CONTROLADOR: detalle de un repuesto (Read) y su eliminación
+  CONTROLADOR: detalle de un repuesto (Read) y su eliminación
    ========================================================== */
 const DetalleController = {
 

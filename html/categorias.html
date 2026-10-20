@@ -20,7 +20,7 @@
 
       <main>
 
-                <div class="page-head">
+        <div class="page-head">
           <div>
             <p class="eyebrow">Organización del inventario</p>
             <h1>Categorías</h1>
@@ -35,14 +35,23 @@
           <div class="stat"><small>Sin clasificar</small><strong id="catSinClasificar">0</strong>Productos por organizar</div>
         </section>
 
+        <!-- Tarjeta con el buscador y el listado -->
         <div class="card" style="padding: 0;">
-          <div style="padding: 20px;">
-            <h2>Todas las categorías</h2>
-            <p class="subtitle" id="catTotal"></p>
+
+          <div class="card-head" style="padding: 20px; flex-wrap: wrap;">
+            <div>
+              <h2>Todas las categorías</h2>
+              <p class="subtitle" id="catTotal"></p>
+            </div>
+            <input type="search" id="buscarCategoria" class="buscador" placeholder="Buscar categoría..." aria-label="Buscar categoría">
           </div>
+
+          <!-- Aquí JavaScript dibuja las filas -->
           <div id="listaCategorias"></div>
+
         </div>
 
+        <!-- Ventana para crear y editar -->
         <div class="modal" id="modalCategoria">
           <div class="modal-box" role="dialog" aria-modal="true">
             <h2>Nueva categoría</h2>
@@ -71,7 +80,8 @@
     </div>
   </div>
 
-  <script src="../js/cargador.js"></script>
+
+    <script src="../js/cargador.js"></script>
 
 </body>
 </html>

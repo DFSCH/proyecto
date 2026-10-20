@@ -18,6 +18,7 @@
 @import 'components/toast.css';
 @import 'components/upload.css';
 @import 'components/notificaciones.css';
+@import 'components/busqueda.css';
 
 /* 3. Estilos propios de cada página */
 @import 'pages/inicio.css';

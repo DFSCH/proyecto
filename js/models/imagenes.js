@@ -1,12 +1,12 @@
 /* ==========================================================
-   MODELO: qué imagen corresponde a cada repuesto.
+  MODELO: qué imagen corresponde a cada repuesto.
 
-   Por defecto el archivo se llama igual que el código:
-   assets/img/RP-001.jpg
+  Por defecto el archivo se llama igual que el código:
+  assets/img/RP-001.jpg
 
-   Si tu archivo se llama distinto, cambia el texto de la
-   derecha (sin la extensión). Ejemplo:
-   'RP-001': 'pastillas-freno'
+  Si tu archivo se llama distinto, cambia el texto de la
+  derecha (sin la extensión). Ejemplo:
+  'RP-001': 'pastillas-freno'
    ========================================================== */
 const ImagenesModel = {
 

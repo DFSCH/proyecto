@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: tarjetas y resumen de proveedores
+  VISTA: tarjetas y resumen de proveedores
    ========================================================== */
 const ProveedoresView = {
 
@@ -31,7 +31,16 @@ const ProveedoresView = {
   },
 
   pintarLista(proveedores) {
-    document.getElementById('listaProveedores').replaceChildren(...proveedores.map(ProveedoresView.tarjeta));
+    const contenedor = document.getElementById('listaProveedores');
+
+    if (proveedores.length === 0) {
+      contenedor.replaceChildren(crearElemento('p', {
+        clase: 'empty', style: 'grid-column:1/-1', texto: 'No hay proveedores con esa búsqueda.'
+      }));
+      return;
+    }
+
+    contenedor.replaceChildren(...proveedores.map((proveedor) => ProveedoresView.tarjeta(proveedor)));
     Icons.aplicar();
   },
 

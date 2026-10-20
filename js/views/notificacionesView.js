@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: dibuja la campana y el panel de notificaciones
+  VISTA: dibuja la campana y el panel de notificaciones
    ========================================================== */
 const NotificacionesView = {
 

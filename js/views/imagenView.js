@@ -1,5 +1,5 @@
 /* ==========================================================
-   VISTA: pone las fotos en la tabla y en el detalle
+  VISTA: pone las fotos en la tabla y en el detalle
    ========================================================== */
 const ImagenView = {
 

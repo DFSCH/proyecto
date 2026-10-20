@@ -1,5 +1,5 @@
 /* ==========================================================
-   MODELO: reglas de validación (no toca el DOM)
+  MODELO: reglas de validación (no toca el DOM)
    ========================================================== */
 const Validator = {
 

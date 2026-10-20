@@ -35,7 +35,13 @@
           <div class="stat"><small>Pedidos pendientes</small><strong id="provPendientes">0</strong>Por recibir esta semana</div>
         </section>
 
-        <h2 style="margin-bottom: 12px;">Directorio de proveedores</h2>
+        <div class="card-head" style="margin-bottom: 12px; flex-wrap: wrap; align-items: center;">
+            <div>
+              <h2>Directorio de proveedores</h2>
+              <p class="subtitle" id="provTotal"></p>
+            </div>
+            <input type="search" id="buscarProveedor" class="buscador" placeholder="Buscar proveedor..." aria-label="Buscar proveedor">
+          </div>
         <div class="prov-grid" id="listaProveedores"></div>
 
         <div class="modal" id="modalProveedor">
