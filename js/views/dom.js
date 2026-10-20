@@ -11,7 +11,17 @@ function crearElemento(etiqueta, atributos = {}, ...hijos) {
     else elemento.setAttribute(nombre, valor);
   });
 
-  elemento.append(...hijos);
+  hijos.forEach((hijo) => {
+    const esContenidoValido =
+      hijo instanceof Node || typeof hijo === 'string' || typeof hijo === 'number';
+
+    if (esContenidoValido) {
+      elemento.append(hijo);
+    } else if (window.avisarProblema) {
+      window.avisarProblema(`<${etiqueta}> recibió un objeto como contenido. Revisa los paréntesis de esa llamada.`);
+    }
+  });
+
   return elemento;
 }
 
