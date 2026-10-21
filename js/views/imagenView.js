@@ -3,9 +3,16 @@
    ========================================================== */
 const ImagenView = {
 
-  // Carga una imagen probando cada extensión.
-  // Si ninguna existe, ejecuta alFallar().
+  // Carga la imagen de un repuesto: primero la subida por el usuario,
+  // si no hay, prueba cada extensión en assets/img/. Si no existe, alFallar().
   cargar(img, codigo, raiz, alFallar) {
+    const fotoSubida = FotosModel.obtener(codigo);
+
+    if (fotoSubida) {
+      img.src = fotoSubida;
+      return;
+    }
+
     let intento = 0;
 
     img.onerror = () => {

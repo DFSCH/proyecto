@@ -36,11 +36,20 @@ const RepuestosModel = (() => {
       (!claveEstado || estado(repuesto).clave === claveEstado)
     );
 
+
+  // Al eliminar un repuesto también se borra su foto subida
+  const eliminar = (id) => {
+    repositorio.eliminar(id);
+    FotosModel.eliminar(id);
+  };
+
   const crear = (datos) =>
     repositorio.crear({ ...convertirNumeros(datos), id: datos.codigo, creado: ahora(), actualizado: ahora() });
 
   const editar = (id, datos) =>
     repositorio.actualizar(id, { ...convertirNumeros(datos), actualizado: ahora() });
+
+
 
   // Si se renombra una categoría o proveedor, sus repuestos se actualizan
   const reasignar = (campo, valorAnterior, valorNuevo) => {
@@ -82,8 +91,8 @@ const RepuestosModel = (() => {
     }));
   };
 
-  return {
-    ...repositorio, crear, editar, estado, margen, existeCodigo,
+    return {
+    ...repositorio, crear, editar, eliminar, estado, margen, existeCodigo,
     filtrar, reasignar, resumen, alertas, distribucionPorCategoria
   };
 })();

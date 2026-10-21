@@ -37,7 +37,9 @@ const EditarController = {
     EditarController.cargarFoto(repuesto);
 
     form.addEventListener('guardar', (evento) => {
+      
       RepuestosModel.editar(id, evento.detail);
+      UploadController.aplicarAlGuardar(repuesto.codigo);
       setTimeout(() => { window.location.href = `detalle.html?id=${encodeURIComponent(id)}`; }, 900);
     });
   }

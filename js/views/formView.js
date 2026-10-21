@@ -1,10 +1,17 @@
 /* ==========================================================
-  VISTA: errores de formulario y mensajes (sin alert)
+   VISTA: errores de formulario y mensajes (sin alert)
    ========================================================== */
 const FormView = {
 
+  // Devuelve el contenedor .field del campo, o null si no tiene
+  contenedorDe(input) {
+    return input.closest('.field');
+  },
+
   mostrarError(input, mensaje) {
-    const campo = input.closest('.field');
+    const campo = FormView.contenedorDe(input);
+    if (!campo) return;
+
     let aviso = campo.querySelector('.error');
 
     if (!aviso) {
@@ -19,7 +26,9 @@ const FormView = {
   },
 
   limpiarError(input) {
-    const campo = input.closest('.field');
+    const campo = FormView.contenedorDe(input);
+    if (!campo) return; // por ejemplo, el campo oculto de la imagen
+
     campo.classList.remove('invalid');
 
     const aviso = campo.querySelector('.error');
@@ -28,6 +37,7 @@ const FormView = {
 
   limpiarForm(form) {
     form.reset();
+
     form
       .querySelectorAll('input, select, textarea')
       .forEach((campo) => FormView.limpiarError(campo));

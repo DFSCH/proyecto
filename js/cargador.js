@@ -1,7 +1,7 @@
 /* ==========================================================
-   CARGADOR: carga todos los scripts en orden desde un solo lugar.
-   Calcula la ruta sola, así sirve igual en index.html y en html/.
-   Si falta un archivo o hay un error, lo muestra en pantalla.
+  CARGADOR: carga todos los scripts en orden desde un solo lugar.
+  Calcula la ruta sola, así sirve igual en index.html y en html/.
+  Si falta un archivo o hay un error, lo muestra en pantalla.
    ========================================================== */
 (function () {
 
@@ -16,6 +16,7 @@
     'models/validator.js',
     'models/menu.js',
     'models/imagenes.js',
+    'models/fotos.js',
     'models/notificaciones.js',
     'models/repositorio.js',
     'models/repuestos.js',
@@ -28,6 +29,7 @@
     'utils/formulario.js',
     'utils/formato.js',
     'utils/paginacion.js',
+    'utils/imagen.js', 
 
     // Vistas
     'views/dom.js',

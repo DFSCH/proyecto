@@ -1,12 +1,17 @@
 /* ==========================================================
-  CONTROLADOR: subir imagen (clic o arrastrar y soltar)
+   CONTROLADOR: subir imagen (clic o arrastrar y soltar).
+   Guarda la imagen reducida en memoria hasta que se guarda
+   el formulario.
    ========================================================== */
 const UploadController = {
 
   tiposValidos: ['image/png', 'image/jpeg', 'image/webp'],
   maxBytes: 5 * 1024 * 1024, // 5 MB
 
-  procesar(archivo) {
+  imagenNueva: null,      // imagen lista para guardar (texto)
+  imagenQuitada: false,   // true si el usuario pulsó la X
+
+  async procesar(archivo) {
     if (!archivo) return;
 
     if (!UploadController.tiposValidos.includes(archivo.type)) {
@@ -19,15 +24,34 @@ const UploadController = {
       return;
     }
 
-    UploadView.mostrarPrevia(URL.createObjectURL(archivo), archivo.name);
+    try {
+      const imagen = await redimensionarImagen(archivo);
+
+      UploadController.imagenNueva = imagen;
+      UploadController.imagenQuitada = false;
+      UploadView.mostrarPrevia(imagen, archivo.name);
+    } catch (error) {
+      UploadView.error('No se pudo leer la imagen. Prueba con otra.');
+    }
   },
 
-  init() {
-    const zona = document.getElementById('zonaImagen');
-    if (!zona) return;
+  quitar() {
+    UploadController.imagenNueva = null;
+    UploadController.imagenQuitada = true;
+    UploadView.limpiar();
+  },
 
-    const input = document.getElementById('archivoImagen');
+  // Lo llaman Registrar y Editar cuando el formulario ya es válido
+  aplicarAlGuardar(codigo) {
+    if (UploadController.imagenNueva) {
+      const cupo = FotosModel.guardar(codigo, UploadController.imagenNueva);
+      if (!cupo) FormView.toast('La imagen no cabe en el almacenamiento. Usa una más pequeña.');
+    } else if (UploadController.imagenQuitada) {
+      FotosModel.eliminar(codigo);
+    }
+  },
 
+  conectarZona(zona, input) {
     zona.addEventListener('click', () => input.click());
 
     zona.addEventListener('keydown', (evento) => {
@@ -51,18 +75,23 @@ const UploadController = {
       });
     });
 
-    zona.addEventListener('drop', (evento) => {
-      UploadController.procesar(evento.dataTransfer.files[0]);
-    });
-
+    zona.addEventListener('drop', (evento) => UploadController.procesar(evento.dataTransfer.files[0]));
     input.addEventListener('change', () => UploadController.procesar(input.files[0]));
+  },
 
-    document.getElementById('quitarImagen').addEventListener('click', () => {
-      UploadView.limpiar();
-    });
+  init() {
+    const zona = document.getElementById('zonaImagen');
+    if (!zona) return;
 
-    // Al limpiar o restablecer el formulario, también se quita la imagen
+    const input = document.getElementById('archivoImagen');
+
+    UploadController.conectarZona(zona, input);
+    document.getElementById('quitarImagen').addEventListener('click', UploadController.quitar);
+
+    // Al limpiar el formulario también se descarta la imagen pendiente
     input.closest('form').addEventListener('reset', () => {
+      UploadController.imagenNueva = null;
+      UploadController.imagenQuitada = false;
       UploadView.limpiar();
       UploadView.error('');
     });

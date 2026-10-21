@@ -20,6 +20,8 @@ const RegistrarController = {
         evento.preventDefault();
         return;
       }
+      
+      UploadController.aplicarAlGuardar(datos.codigo);
 
       RepuestosModel.crear(datos);
       setTimeout(() => { window.location.href = 'repuestos.html'; }, 900);
