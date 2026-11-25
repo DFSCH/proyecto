@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MotoStock · Tu moto, siempre en marcha</title>
+    <meta name="description" content="Encuentra repuestos para tu moto en el catálogo de MotoStock.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="km-verde.css">
+</head>
+
+<body>
+    <div class="announcement">PASIÓN POR LAS MOTOS. PRECISIÓN EN CADA REPUESTO.</div>
+    <header><a class="logo" href="#">MOTO<span>STOCK</span><small>REPUESTOS & ACCESORIOS</small></a>
+        <nav><a href="#catalogo">Repuestos</a><a href="#categorias">Categorías</a><a href="#ayuda">Cómo comprar</a><a
+                class="km-nav" href="#km-verde"><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 4C10 2 3 7 5 14c2 7 13 7 15-10Z" />
+                    <path d="m5 20 9-10" />
+                </svg>KM Verde</a></nav><button class="cart-button" id="openCart">Mi carrito <b
+                id="count">0</b></button>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">HECHO PARA SEGUIR RODANDO</p>
+                <h1>Tu próxima ruta<br>empieza <em>aquí.</em></h1>
+                <p>El repuesto que tu moto necesita.<br>Encuéntralo fácil y vuelve al camino.</p><a class="button"
+                    href="#catalogo">Explorar repuestos <span>↗</span></a>
+                <div class="hero-note">MOTOR · FRENOS · TRANSMISIÓN · ACCESORIOS</div>
+            </div><span class="hero-index">01 / MOTO STOCK</span>
+        </section>
+        <section class="finder">
+            <div><span class="eyebrow">ENCUENTRA EL INDICADO</span>
+                <h2>¿Qué moto tienes?</h2>
+            </div><label>Modelo<select id="model">
+                    <option value="">Todas las motos</option>Yamaha FZ 2.0</option>
+                    <option>Honda CB 190R</option>
+                    <option>Universal</option>
+                </select></label><a class="button dark" href="#catalogo">Buscar repuestos →</a>
+        </section>
+        <section id="categorias" class="categories"><a href="#catalogo" data-cat="Motor"><span>01</span>Motor ↗</a><a
+                href="#catalogo" data-cat="Frenos"><span>02</span>Frenos ↗</a><a href="#catalogo"
+                data-cat="Transmisión"><span>03</span>Transmisión ↗</a><a href="#catalogo"
+                data-cat="Eléctrico"><span>04</span>Eléctrico ↗</a><a href="#catalogo"
+                data-cat="Accesorios"><span>05</span>Accesorios ↗</a></section>
+        <section id="catalogo" class="catalog">
+            <div class="section-title">
+                <div>
+                    <p class="eyebrow">EQUIPA TU PRÓXIMO KILÓMETRO</p>
+                    <h2>Repuestos que mueven.</h2>
+                </div><span id="results"></span>
+            </div>
+            <div class="toolbar">
+                <div class="tabs" id="tabs"></div><label class="search"><span>⌕</span><input id="search"
+                        placeholder="Buscar repuesto, marca o código" aria-label="Buscar repuesto"></label>
+            </div>
+            <div class="sort-row"><label><input type="checkbox" id="available"> Solo disponibles</label><select
+                    id="sort" aria-label="Ordenar productos">
+                    <option value="default">Orden recomendado</option>
+                    <option value="low">Menor precio</option>
+                    <option value="high">Mayor precio</option>
+                </select></div>
+            <div id="products" class="products"></div>
+        </section>
+        <section class="km-section" id="km-verde" aria-labelledby="km-title">
+            <div class="km-intro">
+                <div>
+                    <p class="eyebrow">MOTOSTOCK · DALE VALOR A TU REPUESTO USADO</p>
+                    <h2 id="km-title">KM <span>Verde</span></h2>
+                    <h3>Trae tu repuesto.<br>Renueva con un descuento.</h3>
+                    <p>Presenta tu repuesto usado o envía sus datos y una foto. Nuestro personal lo recibe, revisa su
+                        estado y determina si aplica un descuento para el repuesto nuevo que elijas.</p><a
+                        href="#kv-form" class="button km-button">Presentar mi repuesto ↓</a>
+                </div>
+                <div class="kv-request">
+                    <h3>Así funciona</h3>
+                    <p><b>01.</b> Presenta el repuesto usado e indica cuál nuevo necesitas.</p>
+                    <p><b>02.</b> El personal inspecciona la pieza y autoriza o rechaza el descuento.</p>
+                    <p><b>03.</b> Consulta el resultado y el valor restante antes de comprar.</p>
+                </div>
+            </div>
+            <div class="kv-panel">
+                <h3>Solicitar valoración</h3>
+                <p>Una foto permite iniciar la solicitud; el descuento requiere la validación del personal y la entrega
+                    del repuesto.</p>
+                <form id="kv-form" class="kv-form"><label>Nombre del cliente<input id="kv-name" required maxlength="100"
+                            autocomplete="name"></label><label>Repuesto usado que presentas<input id="kv-part" required
+                            maxlength="150"></label><label>Forma de entrega<select id="kv-method">
+                            <option>Lo llevaré al taller</option>
+                            <option>Enviaré el repuesto al taller</option>
+                        </select></label><label>Repuesto nuevo que quieres comprar<select id="kv-product"
+                            required></select></label><label class="kv-wide">Describe el estado del repuesto<textarea
+                            id="kv-description" required maxlength="1000"
+                            placeholder="Indica desgaste, daños y funcionamiento"></textarea></label><label>Foto del
+                        repuesto (opcional, máximo 600 KB)<input id="kv-photo" type="file"
+                            accept="image/jpeg,image/png,image/webp"></label>
+                    <p class="kv-note">Coordina la entrega o el envío con el taller. Este formulario registra la
+                        solicitud; no contrata un envío ni confirma la recepción.</p><button
+                        class="button km-button">Enviar a revisión</button>
+                </form>
+                <p id="kv-message" role="status"></p>
+                <h3>Mis solicitudes y descuentos</h3>
+                <p class="kv-note">Solicitudes registradas en este navegador. Solo se aplica una valoración aprobada por
+                    carrito, a una unidad del repuesto nuevo seleccionado.</p>
+                <div id="kv-requests"></div>
+                <p class="kv-note">El descuento depende de la evaluación del personal. No se asignan porcentajes
+                    automáticos. Esta versión local no procesa pagos, no reserva inventario ni registra una venta.</p>
+            </div>
+        </section>
+        <section class="help" id="ayuda">
+            <div>
+                <p class="eyebrow">ASÍ DE FÁCIL</p>
+                <h2>Menos vueltas.<br>Más kilómetros.</h2>
+            </div>
+            <div><b>01 / Encuentra</b>
+                <p>Busca por categoría o modelo. Revisa la compatibilidad en el detalle de cada repuesto.</p>
+            </div>
+            <div><b>02 / Elige</b>
+                <p>Agrega los productos al carrito y ajusta las cantidades que necesitas.</p>
+            </div>
+            <div><b>03 / Prepara</b>
+                <p>Descarga tu lista para consultar disponibilidad y compra con el taller.</p>
+            </div>
+        </section>
+        <p class="demo">Catálogo conectado al inventario del administrador en este navegador. Precios en COP. No se
+            procesan pagos ni pedidos.</p>
+    </main>
+    <footer><a class="logo" href="#">MOTO<span>STOCK</span></a>
+        <p>Tu moto, siempre en marcha.</p><span>© 2026 MotoStock</span>
+    </footer>
+    <dialog id="detail"></dialog>
+    <dialog id="cart">
+        <div class="dialog-head">
+            <h2>Tu carrito</h2><button class="close" data-close="cart" aria-label="Cerrar carrito">×</button>
+        </div>
+        <div id="cartItems"></div>
+        <div id="kv-cart-summary"></div>
+        <div class="total"><span>Total estimado</span><strong id="total"></strong></div>
+        <p class="muted">Lista de consulta. La compra y el inventario se confirman con el taller.</p><button
+            class="button" id="download">Descargar lista de repuestos ↓</button>
+    </dialog>
+    <div id="toast" role="status"></div>
+    <script src="../js/data/datosIniciales.js"></script>
+    <script src="../js/storage/almacenLocal.js"></script>
+    <script src="../js/models/repositorio.js"></script>
+    <script src="../js/models/fotos.js"></script>
+    <script src="../js/models/repuestos.js"></script>
+    <script src="../js/models/imagenes.js"></script>
+    <script src="../js/models/kmVerde.js"></script>
+    <script src="app.js"></script>
+    <script src="km-verde.js"></script>
+</body>
+
+</html>

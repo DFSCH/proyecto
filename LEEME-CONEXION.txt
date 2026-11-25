@@ -1,0 +1,19 @@
+MOTOSTOCK — ADMINISTRADOR Y CLIENTE
+
+1. Abre esta carpeta completa con Visual Studio Code.
+2. Usa Live Server sobre index.html (administrador).
+3. En el menú del administrador pulsa «Ver tienda del cliente».
+4. Para ver ambos al tiempo abre el enlace del cliente en otra pestaña.
+
+Ambas páginas leen motostock_repuestos y motostock_fotos. Crear, editar o eliminar productos, cambiar precios, existencias y fotos se refleja en el catálogo. El carrito se ajusta si baja el stock o se elimina un producto.
+
+No abras los HTML con doble clic: file:// no garantiza almacenamiento compartido. Usa siempre el mismo navegador, dirección y puerto (por ejemplo http://127.0.0.1:5500). Los datos previos se conservan solo si se mantiene el mismo origen.
+
+Esta integración es local, no una base de datos compartida entre equipos. No incluye autenticación ni pedidos reales; no publiques el administrador como sistema protegido. Para varios dispositivos se necesita servidor, base de datos y autenticación.
+
+Fuente: carpeta local original del proyecto. El RAR adjunto no pudo materializarse en este entorno.
+
+KM VERDE — CANJE
+Cliente: entra a KM Verde, indica la pieza usada, el nuevo repuesto y una foto opcional.
+Personal: menú KM Verde · Validaciones. Recibe e inspecciona la pieza, selecciona estado y resultado e ingresa un descuento en COP y su motivo.
+Cliente: consulta la solicitud aprobada y pulsa Aplicar al carrito. Se muestran precio, descuento y restante. Solo una valoración por carrito y una unidad del producto seleccionado. Es una cotización local, sin venta ni canje consumido; no reutilizar como sistema de cobros real.

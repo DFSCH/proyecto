@@ -81,6 +81,7 @@ const ShellView = {
       <nav class="nav">
         <div class="nav-title">Menú principal</div>
         ${items.map(crearEnlace).join('')}
+<a href="${raiz}cliente/index.html">${Icons.svg('eye')}Ver tienda del cliente</a>
 
         <div class="nav-title">Sistema</div>
         <a href="${raiz}html/configuracion.html"

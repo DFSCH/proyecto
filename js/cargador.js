@@ -20,6 +20,7 @@
     'models/notificaciones.js',
     'models/repositorio.js',
     'models/repuestos.js',
+    'models/kmVerde.js',
     'models/categorias.js',
     'models/proveedores.js',
     'models/configuracion.js',
