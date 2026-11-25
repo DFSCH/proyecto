@@ -1,0 +1,10 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import jwt from 'jsonwebtoken';import request from 'supertest';
+import {createApp} from '../src/app.js';
+const secret='test-only-secret-012345678901234567890123456789';
+test('Rol consultado en cada petición y token vencido rechazado',async()=>{let rol='admin',queries=0;const db={execute:async(sql)=>{if(sql.startsWith('SELECT id,nombre,email,rol')){queries++;return [[{id:1,nombre:'Test',email:'test@example.com',rol}]];}throw Error('Consulta inesperada');}};const app=createApp(db,{secret,origins:['http://localhost:5500']});const token=jwt.sign({rol:'admin'},secret,{subject:'1',expiresIn:'1h',issuer:'motostock-api',audience:'motostock-front'});
+ const no=await request(app).post('/api/repuestos').send({});assert.equal(no.status,401);
+ rol='cliente';const changed=await request(app).post('/api/repuestos').set('Authorization','Bearer '+token).send({});assert.equal(changed.status,403);assert.equal(queries,1);
+ rol='admin';const valid=await request(app).post('/api/repuestos').set('Authorization','Bearer '+token).send({});assert.equal(valid.status,400);assert.ok(valid.body.errors.nombre);assert.equal(queries,2);
+ const expired=jwt.sign({},secret,{subject:'1',expiresIn:-1,issuer:'motostock-api',audience:'motostock-front'});assert.equal((await request(app).post('/api/repuestos').set('Authorization','Bearer '+expired).send({})).status,401);
+});
+test('CORS permite solo orígenes configurados y JSON inválido es 400',async()=>{const app=createApp({execute:async()=>[[]]},{secret,origins:['http://localhost:5500']});const allowed=await request(app).get('/api/repuestos').set('Origin','http://localhost:5500');assert.equal(allowed.headers['access-control-allow-origin'],'http://localhost:5500');const denied=await request(app).get('/api/repuestos').set('Origin','http://otro.example');assert.equal(denied.headers['access-control-allow-origin'],undefined);const invalid=await request(app).post('/api/auth/login').set('Content-Type','application/json').send('{');assert.equal(invalid.status,400);});

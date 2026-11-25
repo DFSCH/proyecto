@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>KM Verde | MotoStock</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <header class="top"><a class="brand" href="cliente.html">MOTO<span>STOCK</span></a>
+        <nav><a href="cliente.html">Repuestos</a><a class="green" aria-current="page" href="km-verde.html">KM
+                Verde</a><a href="app.html" data-admin hidden>Inventario</a></nav>
+        <div><span id="user-name"></span><button class="quiet" data-logout>Salir</button></div>
+    </header>
+    <main class="container">
+        <section class="green-banner">
+            <p class="eyebrow">DALE VALOR A TU REPUESTO USADO</p>
+            <h1>KM <span class="green">Verde</span></h1>
+            <h2>Renueva tu moto.<br>Cuida el camino.</h2>
+            <p>Presenta una pieza usada. El personal la recibe, revisa su estado y autoriza un descuento para un
+                repuesto nuevo. La decisión y el cálculo se guardan en la API.</p>
+        </section>
+        <p id="page-message" role="status"></p>
+        <section class="panel" id="customer-panel" hidden>
+            <h2>Presentar mi repuesto</h2>
+            <form id="request-form" novalidate>
+                <div class="form-grid"><label>Repuesto usado<input name="repuesto_usado" maxlength="150" required
+                            aria-describedby="error-repuesto_usado"><small id="error-repuesto_usado"
+                            data-error="repuesto_usado"></small></label><label>Repuesto nuevo<select name="producto_id"
+                            required aria-describedby="error-producto_id"></select><small id="error-producto_id"
+                            data-error="producto_id"></small></label><label>Entrega<select name="entrega"
+                            aria-describedby="error-entrega">
+                            <option value="taller">Lo llevaré al taller</option>
+                            <option value="envio">Lo enviaré al taller</option>
+                        </select><small id="error-entrega" data-error="entrega"></small></label><label>Describe el
+                        estado<textarea name="descripcion" maxlength="1500" required
+                            aria-describedby="error-descripcion"></textarea><small id="error-descripcion"
+                            data-error="descripcion"></small></label></div>
+                <p class="muted">Coordina la entrega con el taller. Registrar esta solicitud no contrata un envío. La
+                    valoración requiere inspección física.</p>
+                <p data-message role="status"></p><button class="button green-button">Enviar a revisión</button>
+            </form>
+        </section>
+        <section class="panel">
+            <div class="section-head">
+                <h2 id="requests-title">Mis solicitudes</h2><button id="reload">Actualizar</button>
+            </div>
+            <div id="requests"></div>
+        </section>
+    </main>
+    <dialog id="review-dialog">
+        <div class="section-head">
+            <h2>Validación del personal</h2><button class="close" data-close="review-dialog"
+                aria-label="Cerrar">×</button>
+        </div>
+        <p id="review-info"></p>
+        <form id="review-form" novalidate><label>Estado inspeccionado<select name="condicion"
+                    aria-describedby="error-condicion">
+                    <option value="">Selecciona</option>
+                    <option>Bueno</option>
+                    <option>Desgaste moderado</option>
+                    <option>Muy deteriorado</option>
+                    <option>No apto</option>
+                </select><small id="error-condicion" data-error="condicion"></small></label><label>Resultado<select
+                    name="estado" aria-describedby="error-estado">
+                    <option value="aprobada">Aprobar descuento</option>
+                    <option value="rechazada">Rechazar</option>
+                </select><small id="error-estado" data-error="estado"></small></label><label>Descuento (COP)<input
+                    name="descuento" type="number" min="0" step="0.01" value="0"
+                    aria-describedby="error-descuento"><small id="error-descuento"
+                    data-error="descuento"></small></label><label>Motivo<textarea name="observaciones" required
+                    aria-describedby="error-observaciones"></textarea><small id="error-observaciones"
+                    data-error="observaciones"></small></label>
+            <p id="review-preview" aria-live="polite"></p>
+            <p class="muted">Confirma que recibiste e inspeccionaste la pieza. La valoración guardada no se puede editar
+                desde esta pantalla.</p>
+            <p data-message role="status"></p><button class="button green-button">Guardar validación</button>
+        </form>
+    </dialog>
+    <dialog id="quote-dialog">
+        <div class="section-head">
+            <h2>Tu descuento KM Verde</h2><button class="close" data-close="quote-dialog" aria-label="Cerrar">×</button>
+        </div>
+        <div id="quote-body"></div>
+        <p class="muted">Cotización de una unidad al precio actual, calculada por el servidor. El descuento no genera
+            saldo a favor. No registra un pago ni una venta.</p><a class="button" href="cliente.html">Volver al
+            catálogo</a>
+    </dialog>
+    <script type="module" src="js/pages/kmverde.page.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Repuestos para tu moto | MotoStock</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <div class="announcement">PASIÓN POR LAS MOTOS. PRECISIÓN EN CADA REPUESTO.</div>
+    <header class="top"><a class="brand" href="cliente.html">MOTO<span>STOCK</span></a>
+        <nav><a href="#catalogo">Repuestos</a><a href="km-verde.html" class="green">KM Verde</a><a href="app.html"
+                data-admin hidden>Administración</a></nav>
+        <div><span id="user-name"></span><a href="index.html" id="access">Ingresar</a><button class="quiet" data-logout
+                id="logout" hidden>Salir</button><button id="open-cart">Carrito <b id="cart-count">0</b></button></div>
+    </header>
+    <main class="container">
+        <section class="hero">
+            <p class="eyebrow">HECHO PARA SEGUIR RODANDO</p>
+            <h1>Tu próxima ruta<br>empieza <em>aquí.</em></h1>
+            <p>El repuesto que tu moto necesita.<br>Encuéntralo fácil y vuelve al camino.</p><a class="button"
+                href="#catalogo">Explorar repuestos ↗</a>
+        </section>
+        <section class="catalog" id="catalogo">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">EQUIPA TU PRÓXIMO KILÓMETRO</p>
+                    <h2>Repuestos que mueven.</h2>
+                </div><span id="results"></span>
+            </div>
+            <div class="filters"><label>Buscar<input id="search"
+                        placeholder="Repuesto, código o marca"></label><label>Categoría<select id="category">
+                        <option value="">Todas</option>
+                    </select></label><label>Tu moto<select id="model">
+                        <option value="">Todas</option>
+                    </select></label><label>Ordenar<select id="sort">
+                        <option value="default">Recomendados</option>
+                        <option value="low">Menor precio</option>
+                        <option value="high">Mayor precio</option>
+                    </select></label></div>
+            <p id="page-message" role="status"></p>
+            <div class="products" id="products"></div>
+        </section>
+        <section class="green-banner">
+            <p class="eyebrow">MOTOSTOCK / ECONOMÍA CIRCULAR</p>
+            <h2>Tu repuesto usado<br>puede ser el próximo paso.</h2>
+            <p>Preséntalo en KM Verde. El personal lo evalúa y decide un descuento para renovar tu moto.</p><a
+                class="button green-button" href="km-verde.html">Conocer KM Verde →</a>
+        </section>
+    </main>
+    <footer>MotoStock · Tu moto, siempre en marcha.</footer>
+    <dialog id="detail-dialog">
+        <div class="section-head">
+            <h2>Detalle</h2><button class="close" data-close="detail-dialog" aria-label="Cerrar">×</button>
+        </div>
+        <div id="detail-body"></div>
+    </dialog>
+    <dialog id="cart-dialog">
+        <div class="section-head">
+            <h2>Tu carrito</h2><button class="close" data-close="cart-dialog" aria-label="Cerrar">×</button>
+        </div>
+        <div id="cart-body"></div>
+        <p class="muted">Carrito temporal en memoria. No reserva inventario ni procesa pagos. Para una valoración con
+            descuento entra a KM Verde.</p><a class="button green-button" href="km-verde.html">Mi descuento KM Verde</a>
+    </dialog>
+    <script type="module" src="js/pages/cliente.page.js"></script>
+</body>
+
+</html>

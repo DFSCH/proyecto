@@ -1,0 +1,16 @@
+{
+ "name": "motostock-front",
+ "version": "1.0.0",
+ "private": true,
+ "type": "module",
+ "engines": {
+  "node": ">=22"
+ },
+ "scripts": {
+  "start": "node server.js",
+  "test": "node --test"
+ },
+ "devDependencies": {
+  "jsdom": "^26.1.0"
+ }
+}
